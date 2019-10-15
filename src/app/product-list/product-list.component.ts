@@ -62,4 +62,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  deleteProduct(productId)
+  {
+    this.ps.deleteProduct(productId);
+  }
+
 }

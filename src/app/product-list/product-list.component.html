@@ -1,5 +1,5 @@
 
-<button mat-stroked-button color="accent" (click)="openMenu()">Novi proizvod</button>
+<button mat-stroked-button color="primary" (click)="openMenu()">Novi proizvod</button>
 
 <div class="login-wrapper" *ngIf="menuOpened" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
@@ -29,7 +29,7 @@
           <mat-form-field>
             <mat-label>Kategorija</mat-label>
             <mat-select [(value)]="selected"[(ngModel)]="productCategory" name="select">
-              <mat-option [value]="categories" *ngFor="let category of categories" >{{category}}
+              <mat-option [value]="category" *ngFor="let category of categories" >{{category}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -42,3 +42,22 @@
       </form>
     </mat-card>
   </div>
+
+<mat-grid-list cols="3" rowHeight="1:1.618">
+    <mat-grid-tile *ngFor="let product of products">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{product.name}}</mat-card-title>
+                <mat-card-subtitle>Cena: {{product.price}}RSD</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>{{product.description}}</mat-card-content>
+            <mat-card-content>{{product.amount}} proizvoda na lageru</mat-card-content>
+            <mat-card-content>Kategorija: {{product.category}}</mat-card-content>
+
+            <button mat-button color="warn" (click) = "deleteProduct(product.id)">Obriši</button>
+            
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+
