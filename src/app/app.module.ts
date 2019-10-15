@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,10 @@ import { UserComponent } from './user/user.component';
 import { ProductService } from './product.service';
 import { UserService } from './user.service';
 import { MaterialModule } from './material/material.module';
+import { DropzoneDirective } from './dropzone.directive';
+import { UploaderComponent } from './uploader/uploader.component';
+import { UploadTaskComponent } from './upload-task/upload-task.component';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { MaterialModule } from './material/material.module';
     ProductComponent,
     ProductListComponent,
     UserListComponent,
-    UserComponent
+    UserComponent,
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -32,7 +39,7 @@ import { MaterialModule } from './material/material.module';
     MaterialModule,
     FormsModule
   ],
-  providers: [ProductService, UserService],
+  providers: [ProductService, UserService, AngularFireStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
