@@ -10,6 +10,17 @@ import { Product } from '../product';
 export class ProductListComponent implements OnInit {
 
   products:Product[];
+
+  categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
+
+  productName:string = "";
+  productDescription:string = "";
+  productPrice:number = 0;
+  productAmount:number = 0;
+  productCategory:string = "";
+
+  menuOpened:boolean = false;
+
   constructor(private ps: ProductService) { }
 
   ngOnInit() {
@@ -23,6 +34,32 @@ export class ProductListComponent implements OnInit {
       })
     });
     
+  }
+
+  openMenu()
+  {
+    this.menuOpened = !this.menuOpened;
+
+  }
+
+  createProduct()
+  {
+    let record = {};
+    record['name'] = this.productName;
+    record['price'] = this.productPrice;
+    record['category'] = this.productCategory;
+    record['description'] = this.productDescription;
+    record['amount'] = this.productAmount;
+    this.ps.createProduct(record).then(resp =>{
+      this.productName = "";
+      this.productPrice = 0;
+      this.productDescription = "";
+      this.productCategory = "";
+      this.productAmount = 0;
+      console.log(resp);
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
 }

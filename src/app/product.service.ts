@@ -18,7 +18,18 @@ export class ProductService {
   }
   
 
-
+  createProduct(record) {
+    return this.fs.collection('articles').add(record);
+  }
+ 
+ 
+  updateProduct(recordId,record){
+    this.fs.doc('articles/' + recordId).update(record);
+  }
+ 
+  deleteProduct(recordId) {
+    this.fs.doc('articles/' + recordId).delete();
+  }
 
 
 }
