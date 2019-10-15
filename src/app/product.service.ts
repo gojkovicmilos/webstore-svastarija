@@ -16,7 +16,10 @@ export class ProductService {
   {
     return this.fs.collection('articles').snapshotChanges();
   }
-  
+
+  getProductById(id: string) {
+    return this.fs.doc('articles/'+id).get();
+  }
 
   createProduct(record) {
     return this.fs.collection('articles').add(record);

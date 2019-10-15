@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product',
@@ -8,9 +9,11 @@ import { ProductService } from '../product.service';
 })
 export class ProductComponent implements OnInit {
 
+  product: Product;
   constructor(private ps: ProductService) { }
 
   ngOnInit() {
+    console.log(localStorage.getItem('productId'));
   }
 
 }

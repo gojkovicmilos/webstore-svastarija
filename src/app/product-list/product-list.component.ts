@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -21,7 +22,7 @@ export class ProductListComponent implements OnInit {
 
   menuOpened:boolean = false;
 
-  constructor(private ps: ProductService) { }
+  constructor(private ps: ProductService, private router: Router) { }
 
   ngOnInit() {
     this.ps.getProducts().subscribe(actionArray =>{
@@ -65,6 +66,10 @@ export class ProductListComponent implements OnInit {
   deleteProduct(productId)
   {
     this.ps.deleteProduct(productId);
+  }
+
+  store(id: string): void {
+    localStorage.setItem('productId', id);
   }
 
 }
