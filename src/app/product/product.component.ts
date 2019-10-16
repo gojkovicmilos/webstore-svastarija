@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product',
@@ -8,9 +9,21 @@ import { ProductService } from '../product.service';
 })
 export class ProductComponent implements OnInit {
 
+  product: Product = new Product;
+
+  gotP:any = {};
   constructor(private ps: ProductService) { }
 
   ngOnInit() {
+    this.ps.getProductById(localStorage.getItem('productId')).subscribe(actionArray =>{
+
+      this.product.name = actionArray.payload.get('name');
+      this.product.price = actionArray.payload.get('price');
+      this.product.category = actionArray.payload.get('category');
+      this.product.quantity = actionArray.payload.get('quantity');
+      this.product.description = actionArray.payload.get('description');
+      });
+    console.log(this.product);
   }
 
 }

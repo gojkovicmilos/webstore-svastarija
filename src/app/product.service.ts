@@ -14,21 +14,24 @@ export class ProductService {
 
   getProducts()
   {
-    return this.fs.collection('articles').snapshotChanges();
+    return this.fs.collection('products').snapshotChanges();
   }
-  
+
+  getProductById(id: string) {
+    return this.fs.doc('products/'+id).snapshotChanges();
+  }
 
   createProduct(record) {
-    return this.fs.collection('articles').add(record);
+    return this.fs.collection('products').add(record);
   }
  
  
   updateProduct(recordId,record){
-    this.fs.doc('articles/' + recordId).update(record);
+    this.fs.doc('products/' + recordId).update(record);
   }
  
   deleteProduct(recordId) {
-    this.fs.doc('articles/' + recordId).delete();
+    this.fs.doc('products/' + recordId).delete();
   }
 
 

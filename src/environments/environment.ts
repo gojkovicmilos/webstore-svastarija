@@ -6,16 +6,17 @@ export const environment = {
   production: false,
   firebase:
   {
-    apiKey: "AIzaSyBCJJVw0gmqV9zgB2bGuqtBmNdg2R_1OFg",
-    authDomain: "svasarija-web-prodavnica.firebaseapp.com",
-    databaseURL: "https://svasarija-web-prodavnica.firebaseio.com",
-    projectId: "svasarija-web-prodavnica",
-    storageBucket: "svasarija-web-prodavnica.appspot.com",
-    messagingSenderId: "307154386170",
-    appId: "1:307154386170:web:bb02e9ab935895485e1d43",
-    measurementId: "G-ZZCX631E1N"
+    apiKey: "AIzaSyA2PD7Xb7yWaf8eJmQLpuZSbjMsrnILqfM",
+    authDomain: "unijashop-bbb70.firebaseapp.com",
+    databaseURL: "https://unijashop-bbb70.firebaseio.com",
+    projectId: "unijashop-bbb70",
+    storageBucket: "unijashop-bbb70.appspot.com",
+    messagingSenderId: "1004008271858",
+    appId: "1:1004008271858:web:6adb17a0cefc0c6028056b",
+    measurementId: "G-2S1R59GMLG"
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
