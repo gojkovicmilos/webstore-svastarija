@@ -73,7 +73,7 @@ export class ProductListComponent implements OnInit {
     
     let record = {};
 
-    record['pic'] = this.productImage.replace("/test%2F", "/test%2Fthumbnails%2F").replace(".jpg", "_200x200.jpg");
+    record['pic'] = this.productImage.replace("/test%2F", "/test%2Fthumbnails%2F").replace(".jpg", "_400x400.jpg");
     record['name'] = this.productName;
     record['price'] = this.productPrice;
     record['category'] = this.productCategory;
