@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   getProductById(id: string) {
-    return this.fs.doc('articles/'+id).get();
+    return this.fs.doc('articles/'+id).snapshotChanges();
   }
 
   createProduct(record) {

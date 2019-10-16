@@ -9,11 +9,21 @@ import { Product } from '../product';
 })
 export class ProductComponent implements OnInit {
 
-  product: Product;
+  product: Product = new Product;
+
+  gotP:any = {};
   constructor(private ps: ProductService) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem('productId'));
+    this.ps.getProductById(localStorage.getItem('productId')).subscribe(actionArray =>{
+
+      this.product.name = actionArray.payload.get('name');
+      this.product.price = actionArray.payload.get('price');
+      this.product.category = actionArray.payload.get('category');
+      this.product.quantity = actionArray.payload.get('quantity');
+      this.product.description = actionArray.payload.get('description');
+      });
+    console.log(this.product);
   }
 
 }
