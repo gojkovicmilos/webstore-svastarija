@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   products:Product[];
+  selected: any;
 
   
 

@@ -1,7 +1,7 @@
+<div>
+  <button mat-stroked-button color="transparent" (click)="openMenu()">Novi proizvod</button>
 
-<button mat-stroked-button color="primary" (click)="openMenu()">Novi proizvod</button>
-
-<div class="login-wrapper" *ngIf="menuOpened" fxLayout="row" fxLayoutAlign="center center">
+  <div class="login-wrapper" style="background-color: transparent;" *ngIf="menuOpened" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
       <mat-card-header>
         <mat-card-title>Novi proizvod</mat-card-title>
@@ -53,9 +53,11 @@
     </mat-card>
   </div>
 
+</div>
+
 <mat-grid-list cols="3" rowHeight="1:1.618">
     <mat-grid-tile *ngFor="let product of products">
-        <mat-card>
+        <mat-card (click) = 'store(product.id)' routerLink="details">
             <mat-card-header>
                 <mat-card-title>{{product.name}}</mat-card-title>
                 <mat-card-subtitle>Cena: {{product.price}}RSD</mat-card-subtitle>
@@ -71,7 +73,7 @@
             
 
             <button mat-button color="warn" (click) = "deleteProduct(product.id)">Obriši</button>
-            <button mat-button color="warn" (click) = 'store(product.id)' routerLink="details">Detalji</button>
+            <button mat-button color="white" (click) = 'store(product.id)' routerLink="details">Detalji</button>
             
         </mat-card>
     </mat-grid-tile>
