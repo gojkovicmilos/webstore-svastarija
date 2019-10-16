@@ -18,6 +18,8 @@ import { DropzoneDirective } from './dropzone.directive';
 import { UploaderComponent } from './uploader/uploader.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AngularFireStorage } from '@angular/fire/storage';
     UserComponent,
     DropzoneDirective,
     UploaderComponent,
-    UploadTaskComponent
+    UploadTaskComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
