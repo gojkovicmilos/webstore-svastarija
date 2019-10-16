@@ -12,6 +12,8 @@ export class ProductListComponent implements OnInit {
 
   products:Product[];
 
+  
+
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
 
   productName:string = "";
@@ -19,6 +21,9 @@ export class ProductListComponent implements OnInit {
   productPrice:number = 0;
   productAmount:number = 0;
   productCategory:string = "";
+  productImage:string = "";
+
+  file:File;
 
   menuOpened:boolean = false;
 
@@ -43,9 +48,32 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  onFileSelected() {
+    const inputNode: any = document.querySelector('#file');
+  
+    if (typeof (FileReader) !== 'undefined') {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        this.file = e.target.result;
+      };
+  
+      reader.readAsArrayBuffer(inputNode.files[0]);
+    }
+  }
+
+  
+
   createProduct()
   {
+    
+    this.productImage = localStorage.getItem("imgURL");
+    console.log(this.productImage);
+    
+    
     let record = {};
+
+    record['pic'] = this.productImage;
     record['name'] = this.productName;
     record['price'] = this.productPrice;
     record['category'] = this.productCategory;
@@ -57,6 +85,7 @@ export class ProductListComponent implements OnInit {
       this.productDescription = "";
       this.productCategory = "";
       this.productAmount = 0;
+      this.productImage = "";
       console.log(resp);
     }).catch(error => {
       console.log(error);
