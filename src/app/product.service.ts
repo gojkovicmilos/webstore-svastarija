@@ -9,6 +9,7 @@ export class ProductService {
 
   products: Product[];
   formProduct: Product;
+  categories: string[];
 
   constructor(private fs: AngularFirestore) { }
 
@@ -32,6 +33,14 @@ export class ProductService {
  
   deleteProduct(recordId) {
     this.fs.doc('products/' + recordId).delete();
+  }
+
+  setCategories(categories: string[]) {
+    this.categories = categories;
+  }
+
+  getCategories() {
+    return this.categories;
   }
 
 
