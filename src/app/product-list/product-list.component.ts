@@ -18,8 +18,8 @@ export class ProductListComponent implements OnInit {
 
   productName:string = "";
   productDescription:string = "";
-  productPrice:number = 0;
-  productAmount:number = 0;
+  productPrice:number;
+  productAmount:number;
   productCategory:string = "";
   productImage:string = "";
 
@@ -68,12 +68,12 @@ export class ProductListComponent implements OnInit {
   {
     
     this.productImage = localStorage.getItem("imgURL");
-    console.log(this.productImage);
-    
+
+    console.log(this.productImage.search("test%2F"));
     
     let record = {};
 
-    record['pic'] = this.productImage;
+    record['pic'] = this.productImage.replace("/test%2F", "/test%2Fthumbnails%2F").replace(".jpg", "_200x200.jpg");
     record['name'] = this.productName;
     record['price'] = this.productPrice;
     record['category'] = this.productCategory;
