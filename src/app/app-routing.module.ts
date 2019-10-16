@@ -9,7 +9,7 @@ import { ProductComponent } from './product/product.component';
 const routes: Routes = [
   {path:'users', component: UserListComponent},
   {path:'products', component: ProductListComponent},
-  {path:'upload', component: UploaderComponent}
+  {path:'upload', component: UploaderComponent},
   {path:'products/details', component: ProductComponent}
 ];
 
