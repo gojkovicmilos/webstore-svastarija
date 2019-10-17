@@ -21,6 +21,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProductCategoryComponent } from './product-category/product-category.co
     UploadTaskComponent,
     AboutUsComponent,
     ContactComponent,
-    ProductCategoryComponent
+    ProductCategoryComponent,
+    OrderComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
