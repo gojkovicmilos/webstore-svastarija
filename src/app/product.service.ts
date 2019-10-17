@@ -12,6 +12,7 @@ export class ProductService {
 
   products: Product[];
   formProduct: Product;
+  categories: string[];
 
   task: AngularFireUploadTask;
 
@@ -43,10 +44,18 @@ export class ProductService {
     this.fs.doc('products/' + recordId).delete();
   }
 
+  setCategories(categories: string[]) {
+    this.categories = categories;
+  }
   uploadPicture(file:File)
   {
     let retURL = "";
     const path = `test/${Date.now()}_${file.name}.jpg`;
+
+  getCategories() {
+    return this.categories;
+  }
+
 
     // Reference to storage bucket
     const ref = this.storage.ref(path);

@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent{
   constructor(){
   }
+  categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
 
+  store(category: string) {
+    localStorage.setItem('category', category);
+  }
 }
