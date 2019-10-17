@@ -1,26 +1,2 @@
-<mat-toolbar color="primary" class="app-header">
-    <span class="nav-tool-items">
-      <a mat-button routerLink="" routerLinkActive="active">Unija Shop</a>
-      <!-- <a mat-raised-button routerLink="users" routerLinkActive="active">Korisnici</a>
-      <a mat-raised-button routerLink="upload" routerLinkActive="active">File Upload</a> -->
-      <a mat-button routerLink="products" routerLinkActive="active">Proizvodi</a>
-      <a mat-button routerLink="about" routerLinkActive="active">O nama</a>
-      <a mat-button routerLink="contact" routerLinkActive="active">Kontakt</a>
-      <mat-menu #appMenu="matMenu">
-        <button mat-menu-item routerLink="products">Svi proizvodi</button>
-        <div *ngFor="let c of categories">
-          <button (click)='store(c)' mat-menu-item routerLink="products/category">{{c}}</button>
-        </div>
-      </mat-menu>  
-      <mat-menu #appMenu2="matMenu">
-        <button mat-menu-item routerLink="users">Korisnici</button>
-        <button mat-menu-item routerLink="upload">File upload</button>
-        <button mat-menu-item routerLink="orders">Porudzbine</button>
-
-      </mat-menu>
-      <a mat-button [matMenuTriggerFor]="appMenu" mat-flat-button>Proizvodi2</a>
-      <a mat-button [matMenuTriggerFor]="appMenu2" mat-flat-button>Admin Panel</a>
-
-    </span>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
+<app-main-nav></app-main-nav>  
+<router-outlet></router-outlet>

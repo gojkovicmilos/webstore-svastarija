@@ -22,6 +22,14 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductCategoryComponent } from './product-category/product-category.component';
 import { OrderComponent } from './order/order.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +44,9 @@ import { OrderComponent } from './order/order.component';
     AboutUsComponent,
     ContactComponent,
     ProductCategoryComponent,
-    OrderComponent
+    OrderComponent,
+    MainNavComponent,
+    SecondaryNavComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -45,7 +55,13 @@ import { OrderComponent } from './order/order.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [ProductService, UserService, AngularFireStorage],
   bootstrap: [AppComponent]
