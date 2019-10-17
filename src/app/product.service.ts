@@ -44,6 +44,10 @@ export class ProductService {
     this.fs.doc('products/' + recordId).delete();
   }
 
+  getCategories() {
+    return this.categories;
+  }
+
   setCategories(categories: string[]) {
     this.categories = categories;
   }
@@ -51,10 +55,10 @@ export class ProductService {
   {
     let retURL = "";
     const path = `test/${Date.now()}_${file.name}.jpg`;
+  
 
-  getCategories() {
-    return this.categories;
-  }
+  
+  
 
 
     // Reference to storage bucket
