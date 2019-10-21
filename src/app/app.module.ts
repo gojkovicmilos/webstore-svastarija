@@ -30,6 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
     ProductCategoryComponent,
     OrderComponent,
     MainNavComponent,
-    SecondaryNavComponent
+    SecondaryNavComponent,
+    HomePageComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

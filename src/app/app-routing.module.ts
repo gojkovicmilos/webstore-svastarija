@@ -8,8 +8,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductCategoryComponent } from './product-category/product-category.component'
 import { OrderComponent } from './order/order.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
+  {path:'', component: HomePageComponent},
   {path:'users', component: UserListComponent},
   {path:'products', component: ProductListComponent},
   {path:'upload', component: UploaderComponent},
