@@ -5,9 +5,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="drawer.toggle()" routerLink='products' routerLinkActive='active'>Proizvodi</a>
-      <a mat-list-item (click)="drawer.toggle()" routerLink='about' routerLinkActive='active'>O nama</a>
-      <a mat-list-item (click)="drawer.toggle()" routerLink='contact' routerLinkActive='active'>Kontakt</a>
+      <a mat-list-item  routerLink='products' routerLinkActive='active'>Proizvodi</a>
+      <a mat-list-item  routerLink='about' routerLinkActive='active'>O nama</a>
+      <a mat-list-item  routerLink='contact' routerLinkActive='active'>Kontakt</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +20,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <a mat-button routerLink="" (click)='drawer.toggle()' routerLinkActive="active">Unija Shop</a>
+      <a mat-button routerLink="" routerLinkActive="active">Unija Shop</a>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
