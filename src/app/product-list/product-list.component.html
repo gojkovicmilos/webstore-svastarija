@@ -93,7 +93,7 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>DETALJI</button>
-    <!-- <button mat-button>DELETE</button> -->
+    <button mat-button (click) = 'store(product.id)' routerLink="details">DETALJI</button>
+    <!-- <button mat-button color="warn" (click) = "deleteProduct(product.id)">Obriši</button> -->
   </mat-card-actions>
 </mat-card>
