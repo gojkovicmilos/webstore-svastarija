@@ -55,25 +55,29 @@
 
 </div>
 
-<mat-grid-list cols="3" rowHeight="1:1.618">
+<!-- <mat-grid-list cols="3" rowHeight="1:1.618" class="materialProductList"> -->
+    <mat-grid-list cols="3" rowHeight="500px" class="materialProductList">
     <mat-grid-tile *ngFor="let product of products">
-        <mat-card (click) = 'store(product.id)' routerLink="details">
+      
+        <mat-card (click) = 'store(product.id)' routerLink="details" class="productList">
             <mat-card-header>
                 <mat-card-title>{{product.name}}</mat-card-title>
-                <mat-card-subtitle>Cena: {{product.price}}RSD</mat-card-subtitle>
+                <mat-card-subtitle>Cena: {{product.price}} RSD</mat-card-subtitle>
             </mat-card-header>
+            <mat-card-content>Kategorija: {{product.category}}</mat-card-content>
 
-            <mat-card-content>
+            <img mat-card-image src="{{product.pic}}">
+            <!-- <mat-card-content>
               <img src="{{product.pic}}">
-            </mat-card-content>
+            </mat-card-content> -->
 
             
-            <mat-card-content>Kategorija: {{product.category}}</mat-card-content>
+            
 
             
 
             <button mat-button color="warn" (click) = "deleteProduct(product.id)">Obriši</button>
-            <button mat-button color="white" (click) = 'store(product.id)' routerLink="details">Detalji</button>
+            <button mat-button color="white" (click) = 'store(product.id)' routerLink="products/details">Detalji</button>
             
         </mat-card>
     </mat-grid-tile>

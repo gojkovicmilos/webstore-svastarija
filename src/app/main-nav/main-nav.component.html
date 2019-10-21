@@ -20,7 +20,8 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <a mat-button routerLink="" routerLinkActive="active">Unija Shop</a>
+      <a mat-button (click)="drawer.toggle()" routerLink="" routerLinkActive="active">Unija Shop</a>
+      <!-- <a mat-list-item (click)="drawer.toggle()"(click)="drawer.toggle()" routerLink='' routerLinkActive='active'>Open</a> -->
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

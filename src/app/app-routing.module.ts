@@ -10,6 +10,7 @@ import { ProductCategoryComponent } from './product-category/product-category.co
 import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
+  // {path:'', component: ProductListComponent},
   {path:'users', component: UserListComponent},
   {path:'products', component: ProductListComponent},
   {path:'upload', component: UploaderComponent},
