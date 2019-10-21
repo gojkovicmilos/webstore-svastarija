@@ -80,7 +80,7 @@
 </mat-grid-list>
  -->
 <div *ngFor="let product of products">
- <mat-card class="example-card" (click)='store(product.id)' routerLink="details">
+ <mat-card class="example-card" (click)='store(product.id)' routerLink="details" style="margin: 2rem">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{product.name}}</mat-card-title>
