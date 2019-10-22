@@ -31,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ProductModalComponent } from './product-modal/product-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     OrderComponent,
     MainNavComponent,
     SecondaryNavComponent,
-    HomePageComponent
+    HomePageComponent,
+    ProductModalComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -63,9 +66,11 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    NgbModule
   ],
   providers: [ProductService, UserService, AngularFireStorage],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProductModalComponent]
 })
 export class AppModule { }

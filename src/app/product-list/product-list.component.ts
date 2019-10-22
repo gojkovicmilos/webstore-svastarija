@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
 
 @Component({
   selector: 'app-product-list',
@@ -28,7 +30,7 @@ export class ProductListComponent implements OnInit {
 
   menuOpened:boolean = false;
 
-  constructor(private ps: ProductService, private router: Router) { }
+  constructor(public dialog: MatDialog, private ps: ProductService, private router: Router) { }
 
   ngOnInit() {
     this.ps.getProducts().subscribe(actionArray =>{
@@ -100,6 +102,10 @@ export class ProductListComponent implements OnInit {
 
   store(id: string): void {
     localStorage.setItem('productId', id);
+  }
+
+  openDialog() {
+    this.dialog.open(ProductModalComponent);
   }
 
 }
