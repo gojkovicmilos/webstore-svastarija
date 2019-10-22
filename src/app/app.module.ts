@@ -33,6 +33,7 @@ import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductModalComponent } from './product-modal/product-modal.component';
+import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
     MainNavComponent,
     SecondaryNavComponent,
     HomePageComponent,
-    ProductModalComponent
+    ProductModalComponent,
+    ShoppinCartComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

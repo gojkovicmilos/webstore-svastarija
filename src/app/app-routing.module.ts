@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductCategoryComponent } from './product-category/product-category.component'
 import { OrderComponent } from './order/order.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'contact', component: ContactComponent},
   {path:'products/category', component: ProductCategoryComponent},
   {path:'orders', component: OrderComponent},
+  {path: 'cart', component: ShoppinCartComponent}
 
 
 ];

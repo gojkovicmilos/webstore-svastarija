@@ -20,3 +20,11 @@
   /* background: #cc6600; */
   color: #fff;
 }
+
+.upperLinks {
+  text-decoration: none;
+}
+
+.upperLinks:hover {
+  color: white;
+}
