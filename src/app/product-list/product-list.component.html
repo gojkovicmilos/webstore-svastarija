@@ -80,6 +80,20 @@
 </mat-grid-list>
  -->
 <mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <!-- <mat-icon class="example-tab-icon">category</mat-icon> -->
+      Svi proizvodi
+    </ng-template>
+    Svi
+  </mat-tab>
+   <mat-tab>
+    <ng-template mat-tab-label>
+      <!-- <mat-icon class="example-tab-icon">category</mat-icon> -->
+      Na akciji
+    </ng-template>
+    akcija
+  </mat-tab>
   <mat-tab *ngFor='let c of categories'>
     <ng-template mat-tab-label>
       <!-- <mat-icon class="example-tab-icon">category</mat-icon> -->
@@ -90,8 +104,9 @@
 </mat-tab-group>
 
 
+<div class="container main-div" >
 <div *ngFor="let product of products">
- <mat-card class="example-card" style="margin-right: 2rem">
+ <mat-card class="example-card item" style="margin-right: 2rem">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{product.name}}</mat-card-title>
@@ -109,5 +124,6 @@
     <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
   </mat-card-actions>
 </mat-card>
+</div>
 </div>
 

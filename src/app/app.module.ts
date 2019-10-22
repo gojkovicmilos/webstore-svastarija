@@ -34,6 +34,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    NgbModule
+    NgbModule, 
+    FlexLayoutModule
   ],
   providers: [ProductService, UserService, AngularFireStorage],
   bootstrap: [AppComponent],
