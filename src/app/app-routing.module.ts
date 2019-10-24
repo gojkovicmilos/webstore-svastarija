@@ -14,7 +14,7 @@ import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
 const routes: Routes = [
   {path:'', component: HomePageComponent},
   {path:'users', component: UserListComponent},
-  {path:'products', component: ProductListComponent},
+  {path:'products', component: ProductListComponent, data: {animation: 'FilterPage'}},
   {path:'upload', component: UploaderComponent},
   {path:'products/details', component: ProductComponent},
   {path:'about', component: AboutUsComponent},

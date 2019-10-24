@@ -24,8 +24,8 @@
       <a class="upperLinks" mat-button routerLink='cart' routerLinkActive='active'><mat-icon class="example-tab-icon">shopping_cart</mat-icon></a>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <div style="">
-      <router-outlet></router-outlet>
+    <div [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
     </div>
     
     
