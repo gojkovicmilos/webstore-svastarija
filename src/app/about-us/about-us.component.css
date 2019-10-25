@@ -1,0 +1,14 @@
+.main-div {
+    padding: 2rem;
+}
+
+.image-div {
+    text-align: center; 
+    margin-top: 6rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    
+}

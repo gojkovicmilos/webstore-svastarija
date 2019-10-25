@@ -27,4 +27,8 @@
 
 .upperLinks:hover {
   color: white;
+} 
+
+.fill-space {
+  flex: 1 1 auto;
 }
