@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
 
   menuOpened:boolean = false;
 
-  constructor(public dialog: MatDialog, private ps: ProductService, private router: Router) { }
+  constructor(private ps: ProductService, private router: Router) { }
 
   ngOnInit() {
     this.ps.getProducts().subscribe(actionArray =>{
@@ -104,8 +104,6 @@ export class ProductListComponent implements OnInit {
     localStorage.setItem('productId', id);
   }
 
-  openDialog() {
-    this.dialog.open(ProductModalComponent);
-  }
+ 
 
 }

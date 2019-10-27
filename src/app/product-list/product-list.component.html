@@ -108,7 +108,7 @@
 <div *ngFor="let product of products">
  <mat-card class="example-card item" style="margin-right: 2rem">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title>{{product.name}}</mat-card-title>
     <mat-card-subtitle>{{product.price}} RSD</mat-card-subtitle>
   </mat-card-header>
@@ -120,7 +120,6 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click) = 'store(product.id)'  routerLink="details">DETALJI</button>
-    <button mat-raised-button (click)="store(product.id);openDialog();">Pick one</button>
     <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
   </mat-card-actions>
 </mat-card>

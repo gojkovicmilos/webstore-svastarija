@@ -24,14 +24,9 @@ import { ProductCategoryComponent } from './product-category/product-category.co
 import { OrderComponent } from './order/order.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -65,11 +60,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MaterialModule,
     FormsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
     NgbModule, 
     FlexLayoutModule
   ],
