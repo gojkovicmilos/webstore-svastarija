@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from '../animations';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-main-nav',
@@ -25,6 +26,12 @@ export class MainNavComponent {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+  returnNumber()
+  {
+    let lista:Product[] = JSON.parse(localStorage.getItem("cart"));
+    return lista.length;
   }
 
 }

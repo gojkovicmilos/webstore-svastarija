@@ -79,33 +79,36 @@
     </mat-grid-tile>
 </mat-grid-list>
  -->
-<mat-tab-group>
+<!-- <mat-tab-group>
   <mat-tab>
     <ng-template mat-tab-label>
-      <!-- <mat-icon class="example-tab-icon">category</mat-icon> -->
       Svi proizvodi
     </ng-template>
     Svi
   </mat-tab>
    <mat-tab>
     <ng-template mat-tab-label>
-      <!-- <mat-icon class="example-tab-icon">category</mat-icon> -->
       Na akciji
     </ng-template>
     akcija
   </mat-tab>
-  <mat-tab *ngFor='let c of categories'>
-    <ng-template mat-tab-label>
-      <!-- <mat-icon class="example-tab-icon">category</mat-icon> -->
+  <div *ngFor="let c of categories" >
+  <mat-tab (click)="showByCat(c)">
+    <ng-template mat-tab-label >
       {{c}}
     </ng-template>
-    Content {{c}}
   </mat-tab>
-</mat-tab-group>
+  </div>
+</mat-tab-group> -->
+<button mat-button (click) = 'showAll()'>SVI PROIZVODI</button>
+<div *ngFor="let c of categories">
+<button mat-button (click) = 'showByCat(c)'>{{c}}</button>
+</div>
+
 
 
 <div class="container main-div">
-<div *ngFor="let product of products">
+<div *ngFor="let product of filteredProducts">
  <mat-card class="example-card item" style="margin-right: 2rem">
   <mat-card-header>
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -120,6 +123,8 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click) = 'store(product.id)'  routerLink="details">DETALJI</button>
+    <button mat-button (click) = 'addToCart(product.id)'  >DODAJ U KORPU</button>
+    <input [(ngModel)]="prodNum" name="prodNum" type="number" placeholder="Kolicina">
     <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
   </mat-card-actions>
 </mat-card>

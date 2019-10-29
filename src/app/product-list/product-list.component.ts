@@ -13,7 +13,12 @@ import { ProductModalComponent } from '../product-modal/product-modal.component'
 export class ProductListComponent implements OnInit {
 
   products:Product[];
+
+  newProduct:Product;
+  productsInCart:Product[] = [];
+  filteredProducts:Product[] = this.products;
   selected: any;
+  prodNum:number = 1;
 
   
 
@@ -40,8 +45,12 @@ export class ProductListComponent implements OnInit {
           id: item.payload.doc.id,
           ...item.payload.doc.data() as Product}
           console.log(this.products);
-      })
+          
+      });
+      this.filteredProducts = this.products;
     });
+
+    
     
   }
 
@@ -65,7 +74,41 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  
+  addToCart(productId)
+  {
+    
+    for(let i =0; i<this.prodNum; i++)
+    {
+      this.products.forEach(element => {
+        if(element.id == productId)
+        this.productsInCart.push(element);
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(this.productsInCart));
+
+  }
+
+  filterCategory(category)
+  {
+   console.log("radi"); 
+  }
+
+
+  showByCat(c)
+  {
+
+    this.filteredProducts = [];
+    this.products.forEach(element => {
+      if(element.category == c)
+      this.filteredProducts.push(element);
+    });
+  }
+
+showAll()
+{
+this.filteredProducts = this.products;
+}
 
   createProduct()
   {
