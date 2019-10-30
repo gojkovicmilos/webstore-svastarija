@@ -27,6 +27,12 @@ mat-tab-group {
    
 }
 
-main-div {
-    
+.tab:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.tab-container {
+    padding: 2rem;
+    margin-bottom: 2rem;
 }

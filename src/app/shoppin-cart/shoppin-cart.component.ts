@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
-import { elementAt } from 'rxjs/operators';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
 
@@ -10,6 +9,8 @@ import { OrderService } from '../order.service';
   styleUrls: ['./shoppin-cart.component.css']
 })
 export class ShoppinCartComponent implements OnInit {
+  
+
 
 
   products:Product[] = [];
@@ -28,6 +29,7 @@ export class ShoppinCartComponent implements OnInit {
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
+    console.log(this.products)
   }
 
 

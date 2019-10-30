@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTabGroup, MatTabChangeEvent } from '@angular/material';
 import { ProductModalComponent } from '../product-modal/product-modal.component';
 import { Order } from '../order';
 
@@ -35,6 +35,7 @@ export class ProductListComponent implements OnInit {
   file:File;
 
   menuOpened:boolean = false;
+
 
   constructor(private ps: ProductService, private router: Router) { }
 
@@ -155,8 +156,14 @@ this.filteredProducts = this.products;
   store(id: string): void {
     localStorage.setItem('productId', id);
   }
-
-
+  
  
+  tabClick(event: MatTabChangeEvent) {
+    console.log(event.index);
+    console.log(event.tab.content);
+    console.log('Clicked: ' );
+    
+  }
+  
 
 }

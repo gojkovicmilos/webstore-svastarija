@@ -1,8 +1,7 @@
-<div class="container main-div">
+  <!-- <div class="container main-div">
     <div *ngFor="let product of products">
      <mat-card class="example-card item" style="margin-right: 2rem">
       <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <mat-card-title>{{product.name}}</mat-card-title>
         <mat-card-subtitle>{{product.price}} RSD</mat-card-subtitle>
       </mat-card-header>
@@ -18,33 +17,36 @@
       </mat-card-actions>
     </mat-card>
     </div>
-    </div>
+    </div>   -->
 
-    <div class="example-container">
-      <mat-form-field>
-        <input matInput placeholder="Name" name="name" [(ngModel)]="name">
-      </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Address" name="address" [(ngModel)]="address">
-      </mat-form-field>
+      
+      
 
-      <mat-form-field>
-        <input matInput placeholder="Phone" name="phone" [(ngModel)]="phone">
-      </mat-form-field>
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name" name="name" [(ngModel)]="name">
+  </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Email" name="email" [(ngModel)]="email">
-      </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Address" name="address" [(ngModel)]="address">
+  </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Note" name="note" [(ngModel)]="note">
-      </mat-form-field>
-    
-    </div>
+  <mat-form-field>
+    <input matInput placeholder="Phone" name="phone" [(ngModel)]="phone">
+  </mat-form-field>
 
-    <button mat-button (click) = 'loadData()'>POTVRDI</button>
+  <mat-form-field>
+    <input matInput placeholder="Email" name="email" [(ngModel)]="email">
+  </mat-form-field>
 
-    <label>Ukupna cena: {{totalCost}}</label>
+  <mat-form-field>
+    <input matInput placeholder="Note" name="note" [(ngModel)]="note">
+  </mat-form-field>
+</div>
 
-    <button mat-button (click) = 'purchase()'>PORUCI</button>
+<button mat-button (click) = 'loadData()'>POTVRDI</button>
+
+<label>Ukupna cena: {{totalCost}}</label>
+
+<button mat-button (click) = 'purchase()'>PORUCI</button>

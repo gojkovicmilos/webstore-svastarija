@@ -16,6 +16,8 @@ import { Product } from '../product';
 })
 export class MainNavComponent {
 
+  num: number = 0;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -30,8 +32,11 @@ export class MainNavComponent {
 
   returnNumber()
   {
-    let lista:Product[] = JSON.parse(localStorage.getItem("cart"));
-    return lista.length;
+    let lista: Product[] = JSON.parse(localStorage.getItem("cart"));
+    if(lista.length != 0) {
+      return lista.length;
+    }
+    return this.num;
   }
 
 }
