@@ -84,8 +84,11 @@ export class ProductListComponent implements OnInit {
     {
       this.products.forEach(element => {
         if(element.id == productId)
+<<<<<<< HEAD
         {
         if(element.amount>0)
+=======
+>>>>>>> parent of 7221f1f8... cart update
         this.productsInCart.push(element);
         console.log(element.amount);
         }
