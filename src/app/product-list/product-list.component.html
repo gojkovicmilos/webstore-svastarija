@@ -134,13 +134,18 @@
       
       <mat-form-field>
         <mat-label>Kolicina</mat-label>
-        <mat-select  [(value)]='num'>
+        <mat-select placeholder="kolicina" [(ngModel)]="num" name="{{product.name}}">
+          <mat-option *ngFor="let i of arr" [value]="i">
+            {{i}}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-select [(value)]='num'>
           <div *ngFor="let i of arr">
             <mat-option value='{{i}}'>
               {{i}}
             </mat-option>
           </div>
-        </mat-select>
+        </mat-select> -->
       </mat-form-field>
       <a (click)='addToCart(product.id); resetNumber();' mat-button [disabled]="(product.amount == 0)"><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
       <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->

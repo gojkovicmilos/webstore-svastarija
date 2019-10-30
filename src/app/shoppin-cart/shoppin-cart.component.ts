@@ -14,6 +14,7 @@ export class ShoppinCartComponent implements OnInit {
 
 
   products:Product[] = [];
+  productsWithPosition: any[] = [];
 
   name:string = "";
   address:string = "";
@@ -29,7 +30,7 @@ export class ShoppinCartComponent implements OnInit {
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
-    console.log(this.products)
+    this.appendPosition();
   }
 
 
@@ -111,6 +112,13 @@ export class ShoppinCartComponent implements OnInit {
       localStorage.setItem("cart", JSON.stringify(this.products));
       
     });
+  }
+
+  appendPosition(): void {
+    this.productsWithPosition = this.products
+    for(let i = 0; i < this.productsWithPosition.length; i++) {
+      this.productsWithPosition[i]['position'] = i + 1;
+    }
   }
 
 }
