@@ -19,11 +19,9 @@ export class ProductListComponent implements OnInit {
   productsInCart:Product[] = [];
   filteredProducts:Product[] = this.products;
   selected: any;
-  prodNum:number = 1;
-
   
-
-  
+  num: number = 1;
+  arr = new Array<number>(50);
 
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
 
@@ -47,13 +45,11 @@ export class ProductListComponent implements OnInit {
         return{
           id: item.payload.doc.id,
           ...item.payload.doc.data() as Product}
-          console.log(this.products);
           
       });
       this.filteredProducts = this.products;
     });
-
-    
+    this.fillArray();
     
   }
 
@@ -61,6 +57,12 @@ export class ProductListComponent implements OnInit {
   {
     this.menuOpened = !this.menuOpened;
 
+  }
+
+  fillArray(): void {
+    for(let i = 0; i < 50; i++) {
+      this.arr[i] = i+1;
+    }
   }
 
   onFileSelected() {
@@ -80,15 +82,12 @@ export class ProductListComponent implements OnInit {
   addToCart(productId)
   {
     
-    for(let i =0; i<this.prodNum; i++)
+    for(let i =0; i<this.num; i++)
     {
       this.products.forEach(element => {
         if(element.id == productId)
-<<<<<<< HEAD
         {
         if(element.amount>0)
-=======
->>>>>>> parent of 7221f1f8... cart update
         this.productsInCart.push(element);
         console.log(element.amount);
         }
@@ -156,6 +155,7 @@ this.filteredProducts = this.products;
   store(id: string): void {
     localStorage.setItem('productId', id);
   }
+
 
  
 
