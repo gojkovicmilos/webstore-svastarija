@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { elementAt } from 'rxjs/operators';
 import { Order } from '../order';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-shoppin-cart',
@@ -23,7 +24,7 @@ export class ShoppinCartComponent implements OnInit {
 
   totalCost:number = 0;
 
-  constructor() { }
+  constructor(private os:OrderService) { }
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
@@ -54,6 +55,46 @@ export class ShoppinCartComponent implements OnInit {
 
     console.log(this.orderToSend);
 
+
+  }
+
+  purchase()
+  {
+    let record = {};
+
+    record['customerAddress'] = this.orderToSend.customerAddress;
+    record['customerEmail'] = this.orderToSend.customerEmail;
+    record['customerName'] = this.orderToSend.customerName;
+    record['customerNote'] = this.orderToSend.customerNote;
+    record['customerPhone'] = this.orderToSend.customerPhone;
+    record['date'] = this.orderToSend.date;
+    record['price'] = this.orderToSend.price;
+
+    let prs = [];
+    this.products.forEach(element => {
+
+      prs.push(this.os.getProductDoc(element.id));
+      
+    });
+    record['products'] = prs;
+    record['title'] = this.orderToSend.title;
+
+    this.os.createOrder(record).then(resp =>
+      {
+        this.orderToSend.customerAddress = "";
+        this.orderToSend.customerEmail = "";
+        this.orderToSend.customerNote = "";
+        this.orderToSend.customerName = "";
+        this.orderToSend.customerPhone = "";
+        this.orderToSend.price = 0;
+        this.orderToSend.date = null;
+        this.orderToSend.products = [];
+        this.orderToSend.title = "";
+        console.log(resp);
+      }).catch(error =>
+        {
+          console.log(error);
+        });
 
   }
 

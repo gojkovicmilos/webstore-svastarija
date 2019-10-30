@@ -19,6 +19,11 @@ export class OrderService {
     return this.fs.doc('orders/'+id).snapshotChanges();
   }
 
+  getProductDoc(id: string)
+  {
+    return this.fs.doc('products'+id).ref;
+  }
+
   createOrder(record) {
     return this.fs.collection('orders').add(record);
   }
