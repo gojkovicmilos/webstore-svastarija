@@ -4,6 +4,7 @@ import { Product } from '../product';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ProductModalComponent } from '../product-modal/product-modal.component';
+import { Order } from '../order';
 
 @Component({
   selector: 'app-product-list',
@@ -19,6 +20,8 @@ export class ProductListComponent implements OnInit {
   filteredProducts:Product[] = this.products;
   selected: any;
   prodNum:number = 1;
+
+  
 
   
 
@@ -74,25 +77,6 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-
-  checkAmount(productId):boolean
-  {
-    for(let i =0; i<this.prodNum; i++)
-    {
-      this.products.forEach(element => {
-        if(element.id == productId)
-        if(element.quantity > 0)
-        {
-        return true;
-        console.log(element.quantity);
-        }
-      });
-    }
-
-    return false;
-
-  }
-
   addToCart(productId)
   {
     
@@ -100,8 +84,11 @@ export class ProductListComponent implements OnInit {
     {
       this.products.forEach(element => {
         if(element.id == productId)
-        if(element.quantity>0)
+        {
+        if(element.amount>0)
         this.productsInCart.push(element);
+        console.log(element.amount);
+        }
       });
     }
 

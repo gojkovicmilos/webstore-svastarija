@@ -6,6 +6,6 @@ export class Product
     name:string;
     picture:string;
     price:number;
-    quantity:number;
+    amount:number;
 
 }
