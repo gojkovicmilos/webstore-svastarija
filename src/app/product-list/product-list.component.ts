@@ -157,12 +157,8 @@ this.filteredProducts = this.products;
     localStorage.setItem('productId', id);
   }
   
- 
-  tabClick(event: MatTabChangeEvent) {
-    console.log(event.index);
-    console.log(event.tab.content);
-    console.log('Clicked: ' );
-    
+  resetNumber(): void {
+    this.num = 1;
   }
   
 
