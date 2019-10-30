@@ -33,7 +33,7 @@ export class MainNavComponent {
   returnNumber()
   {
     let lista: Product[] = JSON.parse(localStorage.getItem("cart"));
-    if(lista.length != 0) {
+    if(lista != null) {
       return lista.length;
     }
     return this.num;
