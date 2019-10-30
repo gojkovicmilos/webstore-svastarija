@@ -74,6 +74,25 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+
+  checkAmount(productId):boolean
+  {
+    for(let i =0; i<this.prodNum; i++)
+    {
+      this.products.forEach(element => {
+        if(element.id == productId)
+        if(element.quantity > 0)
+        {
+        return true;
+        console.log(element.quantity);
+        }
+      });
+    }
+
+    return false;
+
+  }
+
   addToCart(productId)
   {
     
@@ -81,6 +100,7 @@ export class ProductListComponent implements OnInit {
     {
       this.products.forEach(element => {
         if(element.id == productId)
+        if(element.quantity>0)
         this.productsInCart.push(element);
       });
     }

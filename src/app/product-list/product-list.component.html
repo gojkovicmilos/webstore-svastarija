@@ -123,7 +123,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click) = 'store(product.id)'  routerLink="details">DETALJI</button>
-    <button mat-button (click) = 'addToCart(product.id)'  >DODAJ U KORPU</button>
+    <button mat-button (click) = 'addToCart(product.id)' *ngIf="checkAmount()" >DODAJ U KORPU</button>
     <input [(ngModel)]="prodNum" name="prodNum" type="number" placeholder="Kolicina">
     <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
   </mat-card-actions>
