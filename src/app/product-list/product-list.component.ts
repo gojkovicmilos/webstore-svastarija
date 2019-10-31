@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
-import { MatDialog, MatTabGroup, MatTabChangeEvent } from '@angular/material';
+import { MatDialog, MatTabGroup, MatTabChangeEvent, MatSnackBar } from '@angular/material';
 import { ProductModalComponent } from '../product-modal/product-modal.component';
 import { Order } from '../order';
 
@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
   menuOpened:boolean = false;
 
 
-  constructor(private ps: ProductService, private router: Router) { }
+  constructor(private ps: ProductService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.ps.getProducts().subscribe(actionArray =>{
@@ -161,5 +161,11 @@ this.filteredProducts = this.products;
     this.num = 1;
   }
   
+  openSnackBar(productName: string) {
+    this._snackBar.open(productName+" je uspešno dodat u korpu.", '', {
+      duration: 3000,
+    });
+  }
+
 
 }

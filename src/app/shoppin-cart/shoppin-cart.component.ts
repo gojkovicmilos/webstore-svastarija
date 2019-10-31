@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-shoppin-cart',
@@ -26,7 +27,7 @@ export class ShoppinCartComponent implements OnInit {
 
   totalCost:number = 0;
 
-  constructor(private os:OrderService) { }
+  constructor(private os:OrderService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
@@ -133,6 +134,12 @@ export class ShoppinCartComponent implements OnInit {
     for(let i = 0; i < this.productsWithPosition.length; i++) {
       this.productsWithPosition[i]['position'] = i + 1;
     }
+  }
+
+  openSnackBar(productName: string) {
+    this._snackBar.open(productName+" je uspešno uklonjen iz korpe.", '', {
+      duration: 3000,
+    });
   }
 
 }
