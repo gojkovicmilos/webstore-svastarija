@@ -113,9 +113,9 @@
 
 
 
-<mat-grid-list [cols]="breakPoint" rowHeight='600px' (window:resize)="onResize($event)">
-  <mat-grid-tile *ngFor="let product of filteredProducts" [colspan]='1'>
-    <mat-card class="example-card">
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  
+    <mat-card *ngFor="let product of filteredProducts" class="example-card">
       
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -158,6 +158,6 @@
       </mat-card-actions>
       
     </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+ 
+  </div>
 
