@@ -31,6 +31,8 @@ export class ShoppinCartComponent implements OnInit {
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
     this.appendPosition();
+
+    console.log(this.productsWithPosition)
   }
 
 
@@ -113,6 +115,16 @@ export class ShoppinCartComponent implements OnInit {
       
     });
 
+    this.ngOnInit();
+  }
+
+  removeFromCartByPosition(pos: number) {
+    for(let i = 0; i < this.productsWithPosition.length; i++) {
+      if(this.productsWithPosition[i].position == pos) {
+        this.products.splice(this.products.indexOf(this.productsWithPosition[i]), 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(this.products));
+    }
     this.ngOnInit();
   }
 
