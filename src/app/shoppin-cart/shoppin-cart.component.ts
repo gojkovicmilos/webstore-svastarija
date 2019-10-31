@@ -112,6 +112,8 @@ export class ShoppinCartComponent implements OnInit {
       localStorage.setItem("cart", JSON.stringify(this.products));
       
     });
+
+    this.ngOnInit();
   }
 
   appendPosition(): void {
