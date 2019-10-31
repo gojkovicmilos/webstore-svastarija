@@ -40,3 +40,11 @@ mat-tab-group {
 .icon:hover {
     color: white;
 }
+
+.image-container {
+    text-align: center;
+}
+
+.card-content-container {
+    text-align: center;
+}
