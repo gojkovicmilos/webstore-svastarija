@@ -161,10 +161,13 @@ this.filteredProducts = this.products;
     this.num = 1;
   }
   
-  openSnackBar(productName: string) {
-    this._snackBar.open(productName+" je uspešno dodat u korpu.", '', {
-      duration: 3000,
-    });
+  openSnackBar(productName: string, amount: number) {
+    if(amount > 0) {
+      this._snackBar.open(productName+" je uspešno dodat u korpu.", '', {
+        duration: 3000,
+      });
+    }
+    
   }
 
 
