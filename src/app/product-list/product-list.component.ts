@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import { Router } from '@angular/router';
-import { MatDialog, MatTabGroup, MatTabChangeEvent, MatSnackBar } from '@angular/material';
-import { ProductModalComponent } from '../product-modal/product-modal.component';
-import { Order } from '../order';
+import { MatSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -36,6 +35,9 @@ export class ProductListComponent implements OnInit {
 
   menuOpened:boolean = false;
 
+  breakPoint: number = 4;
+  watcher: Subscription;
+
 
   constructor(private ps: ProductService, private router: Router, private _snackBar: MatSnackBar) { }
 
@@ -51,8 +53,17 @@ export class ProductListComponent implements OnInit {
       this.filteredProducts = this.products;
     });
     this.fillArray();
+
+    this.breakPoint = (window.innerWidth <= 400) ? 1 : 4;
+  
     
   }
+
+  onResize(event) {
+    this.breakPoint = (event.target.innerWidth <= 400) ? 1 : 4;
+  }
+
+ 
 
   openMenu()
   {
@@ -97,11 +108,6 @@ export class ProductListComponent implements OnInit {
 
     localStorage.setItem("cart", JSON.stringify(this.productsInCart));
 
-  }
-
-  filterCategory(category)
-  {
-   console.log("radi"); 
   }
 
 
@@ -166,9 +172,7 @@ this.filteredProducts = this.products;
       this._snackBar.open(productName+" je uspešno dodat u korpu.", '', {
         duration: 3000,
       });
-    }
-    
+    } 
   }
-
 
 }
