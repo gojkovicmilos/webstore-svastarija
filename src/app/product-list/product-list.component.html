@@ -147,7 +147,7 @@
           </div>
         </mat-select> -->
       </mat-form-field>
-      <a (click)='addToCart(product.id); resetNumber();' mat-button [disabled]="(product.amount == 0)"><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
+      <a class="icon" (click)='addToCart(product.id); resetNumber();' mat-button [disabled]="(product.amount == 0)"><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
       <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
     </mat-card-actions>
   </mat-card>

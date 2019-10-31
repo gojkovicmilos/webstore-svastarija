@@ -14,3 +14,7 @@ table {
     text-align: right;
     margin-right: 4rem;
 }
+
+.icon:hover {
+    color: white;
+}

@@ -36,3 +36,7 @@ mat-tab-group {
     padding: 2rem;
     margin-bottom: 2rem;
 }
+
+.icon:hover {
+    color: white;
+}
