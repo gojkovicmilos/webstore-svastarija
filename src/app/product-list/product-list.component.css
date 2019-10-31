@@ -45,6 +45,14 @@ mat-tab-group {
     text-align: center;
 }
 
+.card-actions {
+    text-align: center;
+}
+
+mat-form-field {
+    width: 5rem;
+}
+
 .card-content-container {
     text-align: center;
 }
