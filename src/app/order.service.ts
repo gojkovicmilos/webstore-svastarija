@@ -21,7 +21,8 @@ export class OrderService {
 
   getProductDoc(id: string)
   {
-    return this.fs.doc('products'+id).ref;
+    return this.fs.doc('products'+id).get();
+    
   }
 
   createOrder(record) {

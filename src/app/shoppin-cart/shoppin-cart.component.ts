@@ -56,7 +56,7 @@ export class ShoppinCartComponent implements OnInit {
 
     this.orderToSend.title = "newOrder" + this.name;
 
-    console.log(this.orderToSend);
+    //console.log(this.orderToSend);
 
 
   }
@@ -76,9 +76,10 @@ export class ShoppinCartComponent implements OnInit {
     let prs = [];
     this.products.forEach(element => {
 
-      prs.push(this.os.getProductDoc(element.id));
+      prs.push("products/"+ element.id);
       
     });
+    console.log(prs);
     record['products'] = prs;
     record['title'] = this.orderToSend.title;
 
