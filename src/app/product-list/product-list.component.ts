@@ -169,7 +169,7 @@ this.filteredProducts = this.products;
   
   openSnackBar(productName: string, amount: number) {
     if(amount > 0) {
-      this._snackBar.open(productName+" je uspešno dodat u korpu.", '', {
+      this._snackBar.open(productName+" je uspešno dodat u korpu. ("+this.num.toString()+"x)", '', {
         duration: 3000,
       });
     } 

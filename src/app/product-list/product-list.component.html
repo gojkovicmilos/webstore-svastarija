@@ -123,7 +123,7 @@
         <mat-card-subtitle>{{product.price}} RSD</mat-card-subtitle>
       </mat-card-header>
       <div class="image-container">
-        <img mat-card-image src="{{product.pic}}" alt="" (click) = 'store(product.id)'  routerLink="details">
+        <img mat-card-image src="{{product.pic}}" alt="" (click) = 'store(product.id);resetNumber();'  routerLink="details">
       </div>
       <div class="card-content-container">
         <mat-card-content>
@@ -152,7 +152,7 @@
               </div>
             </mat-select> -->
           </mat-form-field>
-          <a class="icon" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); resetNumber(); openSnackBar(product.name, product.amount);' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
+          <a class="icon" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); openSnackBar(product.name, product.amount); resetNumber();' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
           <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
         </div>
       </mat-card-actions>
