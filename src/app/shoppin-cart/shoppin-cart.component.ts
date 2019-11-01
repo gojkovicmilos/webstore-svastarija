@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-shoppin-cart',
@@ -26,11 +27,13 @@ export class ShoppinCartComponent implements OnInit {
 
   totalCost:number = 0;
 
-  constructor(private os:OrderService) { }
+  constructor(private os:OrderService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
     this.appendPosition();
+
+    console.log(this.productsWithPosition)
   }
 
 
@@ -113,6 +116,18 @@ export class ShoppinCartComponent implements OnInit {
       localStorage.setItem("cart", JSON.stringify(this.products));
       
     });
+
+    this.ngOnInit();
+  }
+
+  removeFromCartByPosition(pos: number) {
+    for(let i = 0; i < this.productsWithPosition.length; i++) {
+      if(this.productsWithPosition[i].position == pos) {
+        this.products.splice(this.products.indexOf(this.productsWithPosition[i]), 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(this.products));
+    }
+    this.ngOnInit();
   }
 
   appendPosition(): void {
@@ -120,6 +135,12 @@ export class ShoppinCartComponent implements OnInit {
     for(let i = 0; i < this.productsWithPosition.length; i++) {
       this.productsWithPosition[i]['position'] = i + 1;
     }
+  }
+
+  openSnackBar(productName: string) {
+    this._snackBar.open(productName+" je uspešno uklonjen iz korpe.", '', {
+      duration: 3000,
+    });
   }
 
 }

@@ -36,3 +36,27 @@ mat-tab-group {
     padding: 2rem;
     margin-bottom: 2rem;
 }
+
+.icon:hover {
+    color: white;
+}
+
+.image-container {
+    text-align: center;
+} 
+
+.card-actions {
+    text-align: center;
+}
+
+mat-form-field {
+    width: 5rem;
+}
+
+.card-content-container {
+    text-align: center;
+}
+
+
+
+

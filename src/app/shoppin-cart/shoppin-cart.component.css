@@ -5,3 +5,16 @@
 table {
     width: 100%;
 }
+
+.example-container {
+    text-align: center;
+}
+
+.button-container {
+    text-align: right;
+    margin-right: 4rem;
+}
+
+.icon:hover {
+    color: white;
+}

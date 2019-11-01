@@ -20,7 +20,6 @@ import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
-import { ProductCategoryComponent } from './product-category/product-category.component';
 import { OrderComponent } from './order/order.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -43,7 +42,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     UploadTaskComponent,
     AboutUsComponent,
     ContactComponent,
-    ProductCategoryComponent,
     OrderComponent,
     MainNavComponent,
     SecondaryNavComponent,

@@ -113,44 +113,51 @@
 
 
 
-<div class="container main-div">
-  <div *ngFor="let product of filteredProducts">
-  <mat-card class="example-card item" style="margin-right: 2rem">
-    <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title>{{product.name}}</mat-card-title>
-      <mat-card-subtitle>{{product.price}} RSD</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{product.pic}}" alt="" >
-    <mat-card-content>
-      <p>
-        blablabla
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click) = 'store(product.id)'  routerLink="details">DETALJI</button>
-      <!-- <button mat-button (click) = 'addToCart(product.id)' [disabled]="(product.amount == 0)" >DODAJ U KORPU</button> -->
-      <!-- <input [(ngModel)]="prodNum" name="prodNum" type="number" placeholder="Kolicina"> -->
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  
+    <mat-card *ngFor="let product of filteredProducts" class="example-card">
       
-      <mat-form-field>
-        <mat-label>Kolicina</mat-label>
-        <mat-select placeholder="kolicina" [(ngModel)]="num" name="{{product.name}}">
-          <mat-option *ngFor="let i of arr" [value]="i">
-            {{i}}
-          </mat-option>
-        </mat-select>
-        <!-- <mat-select [(value)]='num'>
-          <div *ngFor="let i of arr">
-            <mat-option value='{{i}}'>
-              {{i}}
-            </mat-option>
-          </div>
-        </mat-select> -->
-      </mat-form-field>
-      <a (click)='addToCart(product.id); resetNumber();' mat-button [disabled]="(product.amount == 0)"><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
-      <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.price}} RSD</mat-card-subtitle>
+      </mat-card-header>
+      <div class="image-container">
+        <img mat-card-image src="{{product.pic}}" alt="" (click) = 'store(product.id)'  routerLink="details">
+      </div>
+      <div class="card-content-container">
+        <mat-card-content>
+          <p>
+            blablabla
+          </p>
+        </mat-card-content>
+      </div>
+      <mat-card-actions>
+        <!-- <button mat-button (click) = 'store(product.id)'  routerLink="details">DETALJI</button> -->
+        <!-- <button mat-button (click) = 'addToCart(product.id)' [disabled]="(product.amount == 0)" >DODAJ U KORPU</button> -->
+        <!-- <input [(ngModel)]="prodNum" name="prodNum" type="number" placeholder="Kolicina"> -->
+        <div class="card-actions">
+          <mat-form-field>
+            <mat-label>Kolicina</mat-label>
+            <mat-select placeholder="kolicina" [(ngModel)]="num" name="{{product.name}}">
+              <mat-option *ngFor="let i of arr" [value]="i">
+                {{i}}
+              </mat-option>
+            </mat-select>
+            <!-- <mat-select [(value)]='num'>
+              <div *ngFor="let i of arr">
+                <mat-option value='{{i}}'>
+                  {{i}}
+                </mat-option>
+              </div>
+            </mat-select> -->
+          </mat-form-field>
+          <a class="icon" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); resetNumber(); openSnackBar(product.name, product.amount);' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
+          <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
+        </div>
+      </mat-card-actions>
+      
+    </mat-card>
+ 
   </div>
-</div>
 
