@@ -17,6 +17,8 @@ export class ShoppinCartComponent implements OnInit {
   products:Product[] = [];
   productsWithPosition: any[] = [];
 
+  isConfirmed:boolean = false;
+
   name:string = "";
   address:string = "";
   note:string = "";
@@ -39,7 +41,6 @@ export class ShoppinCartComponent implements OnInit {
 
   loadData()
   {
-    console.log(this.address);
     this.orderToSend.customerAddress = this.address;
     this.orderToSend.customerEmail = this.email;
     this.orderToSend.customerName = this.name;
@@ -59,7 +60,9 @@ export class ShoppinCartComponent implements OnInit {
 
     this.orderToSend.title = "newOrder" + this.name;
 
+
     //console.log(this.orderToSend);
+    this.isConfirmed = true;
 
 
   }
@@ -97,6 +100,8 @@ export class ShoppinCartComponent implements OnInit {
         this.orderToSend.date = null;
         this.orderToSend.products = [];
         this.orderToSend.title = "";
+        this.isConfirmed = false;
+        localStorage.setItem("cart", "[]");
         console.log(resp);
       }).catch(error =>
         {
