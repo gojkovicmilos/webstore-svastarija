@@ -3,6 +3,7 @@ import { Product } from '../product';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
 import { MatSnackBar } from '@angular/material';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-shoppin-cart',
@@ -29,13 +30,16 @@ export class ShoppinCartComponent implements OnInit {
 
   totalCost:number = 0;
 
-  constructor(private os:OrderService, private _snackBar: MatSnackBar) { }
+  constructor(private os:OrderService, private _snackBar: MatSnackBar, private router: RouterOutlet) { }
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
     this.appendPosition();
-
-    console.log(this.productsWithPosition)
+    this.totalCost = 0;
+    this.products.forEach(element => {
+      this.totalCost+=element.price;
+      
+    });
   }
 
 
@@ -49,10 +53,10 @@ export class ShoppinCartComponent implements OnInit {
 
     this.orderToSend.date = new Date();
 
-    this.products.forEach(element => {
-      this.totalCost+=element.price;
+    // this.products.forEach(element => {
+    //   this.totalCost+=element.price;
       
-    });
+    // });
 
     this.orderToSend.price = this.totalCost;
 
@@ -102,11 +106,18 @@ export class ShoppinCartComponent implements OnInit {
         this.orderToSend.title = "";
         this.isConfirmed = false;
         localStorage.setItem("cart", "[]");
+        this.resetForm();
+        this.totalCost = 0;
+        this.ngOnInit();
+        
         console.log(resp);
-      }).catch(error =>
-        {
-          console.log(error);
-        });
+      })
+      .catch(error =>
+      {
+        console.log(error);
+      });
+    
+    
 
   }
 
@@ -114,14 +125,10 @@ export class ShoppinCartComponent implements OnInit {
   removeFromCart(productId)
   {
     this.products.forEach(element => {
-
       if(element.id == productId)
       this.products.splice(this.products.indexOf(element), 1);
-
-      localStorage.setItem("cart", JSON.stringify(this.products));
-      
     });
-
+    localStorage.setItem("cart", JSON.stringify(this.products));
     this.ngOnInit();
   }
 
@@ -130,8 +137,8 @@ export class ShoppinCartComponent implements OnInit {
       if(this.productsWithPosition[i].position == pos) {
         this.products.splice(this.products.indexOf(this.productsWithPosition[i]), 1);
       }
-      localStorage.setItem("cart", JSON.stringify(this.products));
     }
+    localStorage.setItem("cart", JSON.stringify(this.products));
     this.ngOnInit();
   }
 
@@ -146,6 +153,21 @@ export class ShoppinCartComponent implements OnInit {
     this._snackBar.open(productName+" je uspešno uklonjen iz korpe.", '', {
       duration: 3000,
     });
+  }
+
+  openSnackBar2( ) {
+    this._snackBar.open("Uspešno poručeno!", '', {
+      duration: 3000,
+    });
+    
+  }
+
+  resetForm(): void {
+    this.name = "";
+    this.address = "";
+    this.email = "";
+    this.phone = "";
+    this.note = "";
   }
 
 }

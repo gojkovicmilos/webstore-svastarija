@@ -51,9 +51,9 @@
 </div>
 
 <div class="button-container">
-  <button mat-button [disabled]="isConfirmed" (click) = 'loadData()'>POTVRDI</button>
+  <!-- <button mat-button [disabled]="isConfirmed" (click) = 'loadData()'>POTVRDI</button> -->
 
   <label>Ukupna cena: {{totalCost}}</label>
 
-  <button mat-button (click) = 'purchase()'>PORUCI</button>
+  <button mat-button (click) = 'loadData();purchase();openSnackBar2()'>PORUCI</button>
 </div>
