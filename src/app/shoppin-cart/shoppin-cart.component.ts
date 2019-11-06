@@ -1,13 +1,23 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
 import { MatSnackBar } from '@angular/material';
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-shoppin-cart',
   templateUrl: './shoppin-cart.component.html',
-  styleUrls: ['./shoppin-cart.component.css']
+  styleUrls: ['./shoppin-cart.component.css'],
+  animations: [trigger('myInsertRemoveTrigger', [
+    transition(':enter', [
+      style({ opacity: 0 }),
+      animate('3s', style({ opacity: 1 })),
+    ]),
+    transition(':leave', [
+      animate('3s', style({ opacity: 0 }))
+    ])
+  ]),]
 })
 export class ShoppinCartComponent implements OnInit {
   
@@ -155,6 +165,11 @@ export class ShoppinCartComponent implements OnInit {
 
   getTotalCost() {
     return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
+  }
+
+  scrollDown() {
+    window.scrollTo(0, 500);
+    window.scroll
   }
 
 }

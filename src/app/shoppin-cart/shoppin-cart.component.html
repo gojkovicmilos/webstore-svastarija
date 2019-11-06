@@ -33,11 +33,11 @@
 
 <div *ngIf='!showForm' class="button-container">
   <label>Ukupna cena: {{totalCost}}</label>
-  <button mat-button (click)='showForm = !showForm'>Unesite podatke</button>
+  <button mat-button (click)='showForm = !showForm; scrollDown()'>Unesite podatke</button>
 </div> 
       
 
-<div *ngIf='showForm' class="form-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+<div *ngIf='showForm' class="form-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center"  @myInsertRemoveTrigger>
   <mat-form-field appearance="outline">
     <mat-label>Ime i prezime</mat-label>
     <input matInput name="name" [(ngModel)]="name">
