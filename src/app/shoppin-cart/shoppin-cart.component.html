@@ -1,4 +1,4 @@
-<div class="table-container">
+<div class="table-container" *ngIf="!showForm">
   <table mat-table [dataSource]="productsWithPosition">
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> # </th>
@@ -28,17 +28,17 @@
     <tr mat-row *matRowDef="let row; columns: ['position', 'column', 'column2', 'column3', 'remove'];"></tr>
 
   </table>
-
 </div>
 
 <div *ngIf='!showForm' class="button-container">
   <label>Ukupna cena: {{totalCost}}</label>
-  <button mat-button (click)='showForm = !showForm; scrollDown()'>Unesite podatke</button>
+  <br>
+  <button mat-button (click)='showForm = !showForm'>Dalje</button>
 </div> 
       
 
 <div *ngIf='showForm' class="form-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center"  @myInsertRemoveTrigger>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="first-mat-form-field" appearance="outline">
     <mat-label>Ime i prezime</mat-label>
     <input matInput name="name" [(ngModel)]="name">
     <mat-hint>primer: Petar Perić</mat-hint>
@@ -69,6 +69,7 @@
   </mat-form-field>
   <div class="button-container">
     <label>Ukupna cena: {{totalCost}}</label>
+    <br>
     <button mat-button (click) = 'loadData();purchase();openSnackBar2();showForm=false'>PORUČI</button>
   </div>
 </div>

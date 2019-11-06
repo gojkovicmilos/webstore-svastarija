@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatTableDataSource, MatPaginator } from '@angular/material';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
@@ -12,10 +12,10 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
   animations: [trigger('myInsertRemoveTrigger', [
     transition(':enter', [
       style({ opacity: 0 }),
-      animate('3s', style({ opacity: 1 })),
+      animate('4s', style({ opacity: 1 })),
     ]),
     transition(':leave', [
-      animate('3s', style({ opacity: 0 }))
+      animate('4s', style({ opacity: 0 }))
     ])
   ]),]
 })
@@ -39,13 +39,12 @@ export class ShoppinCartComponent implements OnInit {
 
   constructor(private os:OrderService, private _snackBar: MatSnackBar) { }
 
-
-
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
     this.appendPosition();
     this.totalCost = 0;
     this.totalCost = this.getTotalCost();  
+
   }
 
 
@@ -167,9 +166,5 @@ export class ShoppinCartComponent implements OnInit {
     return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
   }
 
-  scrollDown() {
-    window.scrollTo(0, 500);
-    window.scroll
-  }
 
 }
