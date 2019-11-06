@@ -68,9 +68,9 @@
     <mat-hint>primer: Hitno</mat-hint>
   </mat-form-field>
   <div class="button-container">
-    <label>Ukupna cena: {{totalCost}}</label>
-    <br>
-    <button mat-button (click) = 'loadData();purchase();openSnackBar2();showForm=false'>PORUČI</button>
+    <label style="float: center;">Ukupna cena: {{totalCost}}</label>
+    <button style='float: right;' mat-button (click) = 'loadData();purchase();openSnackBar2();showForm=false'><mat-icon>arrow_forward_ios</mat-icon></button>
+    <button style="float: right;" mat-button (click)="showForm =! showForm"><mat-icon>arrow_back_ios</mat-icon></button>
   </div>
 </div>
 
