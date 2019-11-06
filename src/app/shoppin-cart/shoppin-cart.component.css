@@ -1,5 +1,9 @@
 .table-container {
     padding: 2rem;
+  
+    max-height: 400px;
+    overflow: auto;
+    margin-bottom: 1rem; 
 }
 
 table {

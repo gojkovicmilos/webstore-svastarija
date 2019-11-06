@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Product } from '../product';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
 import { MatSnackBar } from '@angular/material';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-shoppin-cart',
@@ -12,13 +11,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class ShoppinCartComponent implements OnInit {
   
-
-
-
   products:Product[] = [];
   productsWithPosition: any[] = [];
 
-  isConfirmed:boolean = false;
+
+  showForm:boolean = false;
 
   name:string = "";
   address:string = "";
@@ -30,44 +27,31 @@ export class ShoppinCartComponent implements OnInit {
 
   totalCost:number = 0;
 
-  constructor(private os:OrderService, private _snackBar: MatSnackBar, private router: RouterOutlet) { }
+  constructor(private os:OrderService, private _snackBar: MatSnackBar) { }
+
+
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
     this.appendPosition();
     this.totalCost = 0;
-    this.products.forEach(element => {
-      this.totalCost+=element.price;
-      
-    });
+    this.totalCost = this.getTotalCost();  
   }
 
 
-  loadData()
-  {
+
+  loadData() {
     this.orderToSend.customerAddress = this.address;
     this.orderToSend.customerEmail = this.email;
     this.orderToSend.customerName = this.name;
     this.orderToSend.customerNote = this.note;
     this.orderToSend.customerPhone = this.phone;
-
     this.orderToSend.date = new Date();
-
-    // this.products.forEach(element => {
-    //   this.totalCost+=element.price;
-      
-    // });
-
     this.orderToSend.price = this.totalCost;
-
     this.orderToSend.products = this.products;
-
-    this.orderToSend.title = "newOrder" + this.name;
-
+    this.orderToSend.title = "newOrder " + this.name;
 
     //console.log(this.orderToSend);
-    this.isConfirmed = true;
-
 
   }
 
@@ -104,7 +88,6 @@ export class ShoppinCartComponent implements OnInit {
         this.orderToSend.date = null;
         this.orderToSend.products = [];
         this.orderToSend.title = "";
-        this.isConfirmed = false;
         localStorage.setItem("cart", "[]");
         this.resetForm();
         this.totalCost = 0;
@@ -143,7 +126,7 @@ export class ShoppinCartComponent implements OnInit {
   }
 
   appendPosition(): void {
-    this.productsWithPosition = this.products
+    this.productsWithPosition = this.products;
     for(let i = 0; i < this.productsWithPosition.length; i++) {
       this.productsWithPosition[i]['position'] = i + 1;
     }
@@ -168,6 +151,10 @@ export class ShoppinCartComponent implements OnInit {
     this.email = "";
     this.phone = "";
     this.note = "";
+  }
+
+  getTotalCost() {
+    return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
   }
 
 }
