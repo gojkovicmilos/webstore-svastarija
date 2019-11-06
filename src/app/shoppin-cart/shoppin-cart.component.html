@@ -1,5 +1,5 @@
 <div class="table-container">
-  <table mat-table #table [dataSource]="productsWithPosition">
+  <table mat-table [dataSource]="productsWithPosition" class="mat-elevation-z8">
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> # </th>
       <td mat-cell *matCellDef="let row"> {{row.position}} </td>
@@ -28,26 +28,37 @@
       
       
 
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Name" name="name" [(ngModel)]="name">
+<div class="form-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  <mat-form-field appearance="outline">
+    <mat-label>Ime i prezime</mat-label>
+    <input matInput name="name" [(ngModel)]="name">
+    <mat-hint>primer: Petar Perić</mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Address" name="address" [(ngModel)]="address">
+  <mat-form-field appearance="outline">
+    <mat-label>Grad i adresa</mat-label>
+    <input matInput name="address" [(ngModel)]="address">
+    <mat-hint>primer: Kosančić Ivana 15, Novi Sad</mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Phone" name="phone" [(ngModel)]="phone">
+  <mat-form-field appearance="outline">
+    <mat-label>Telefon</mat-label>
+    <input matInput name="phone" [(ngModel)]="phone">
+    <mat-hint>primer: +381/60-111-222</mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Email" name="email" [(ngModel)]="email">
+  <mat-form-field appearance="outline">
+    <mat-label>E-mail</mat-label>
+    <input matInput name="email" [(ngModel)]="email">
+    <mat-hint>primer: example@mail.com</mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Note" name="note" [(ngModel)]="note">
+  <mat-form-field appearance="outline">
+    <mat-label>Poruka</mat-label>
+    <textarea matInput placeholder="Textarea" [(ngModel)]="note"></textarea>
+    <mat-hint>primer: Hitno</mat-hint>
   </mat-form-field>
+
 </div>
 
 <div class="button-container">

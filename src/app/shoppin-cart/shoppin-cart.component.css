@@ -6,15 +6,24 @@ table {
     width: 100%;
 }
 
-.example-container {
-    text-align: center;
-}
+
 
 .button-container {
-    text-align: right;
-    margin-right: 4rem;
+    margin-top: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .icon:hover {
     color: white;
+}
+
+.form-container > * {
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+mat-form-field {
+    margin-bottom: 1rem;
 }
