@@ -52,3 +52,7 @@ td {
     background: #424242;
     border: 1px solid silver;
 }
+
+.sticky:hover {
+    box-shadow: 0 0px 4px 0 silver;
+}
