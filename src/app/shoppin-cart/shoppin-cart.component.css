@@ -33,6 +33,15 @@ mat-form-field {
     margin-top: 1rem;
 }
 
+td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.mat-header-cell {
+    text-align: center;
+}
+
 .sticky {
     position: sticky;
     bottom: 0;
