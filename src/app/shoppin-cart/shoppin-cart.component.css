@@ -1,9 +1,9 @@
 .table-container {
     padding: 2rem;
-    /* max-height: 30rem;
-    overflow: auto; */
-    margin-bottom: 1rem; 
-    margin-top: 1rem;
+    /*max-height: 25rem;
+    overflow: auto;*/
+    /* margin-bottom: 0.5rem;  */
+    margin-top: 0.5rem;
 }
 
 table {
@@ -14,8 +14,7 @@ table {
 
 .button-container {
     margin-top: 1rem;
-    text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .icon:hover {
@@ -23,7 +22,7 @@ table {
 }
 
 .form-container > * {
-    width: 100%;
+    width: 100%; 
     padding-left: 2rem;
     padding-right: 2rem;
     margin-top: 1.5rem;
@@ -32,4 +31,15 @@ table {
 mat-form-field {
     /* margin-bottom: 1rem; */
     margin-top: 1rem;
+}
+
+.sticky {
+    position: sticky;
+    bottom: 0;
+    text-align: center;
+    background-color: silver;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    background: #424242;
+    border: 1px solid silver;
 }

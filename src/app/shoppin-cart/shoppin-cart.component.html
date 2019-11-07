@@ -1,4 +1,4 @@
-<div class="table-container" *ngIf="!showForm">
+<div class="table-container" *ngIf="!showForm" @myInsertRemoveTrigger>
   <table mat-table [dataSource]="productsWithPosition">
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> # </th>
@@ -30,14 +30,13 @@
   </table>
 </div>
 
-<div *ngIf='!showForm' class="button-container">
+<div *ngIf='!showForm' class="sticky">
   <label>Ukupna cena: {{totalCost}}</label>
-  <br>
-  <button mat-button [disabled]="getTotalCost()==0" (click)='showForm = !showForm'>Dalje</button>
+  <button mat-button [disabled]="getTotalCost()==0" (click)='showForm = !showForm'>Ostavi podatke</button>
 </div> 
       
 
-<div *ngIf='showForm' class="form-container" fxLayout="row wrap" fxLayoutAlign="space-evenly center"  @myInsertRemoveTrigger>
+<div *ngIf='showForm' class="form-container" fxLayout="column wrap" fxLayoutAlign="space-evenly center"   @myInsertRemoveTrigger>
   <mat-form-field class="first-mat-form-field" appearance="outline">
     <mat-label>Ime i prezime</mat-label>
     <input matInput name="name" [(ngModel)]="name">
@@ -68,7 +67,7 @@
     <mat-hint>primer: Hitno</mat-hint>
   </mat-form-field>
   <div class="button-container">
-    <p style="float: left;">Ukupna cena: {{totalCost}}</p>
+    <!-- <p style="float: left;">Ukupna cena: {{totalCost}}</p> -->
     <button style='float: right;' mat-button (click) = 'loadData();purchase();openSnackBar2();showForm=false'><mat-icon>arrow_forward_ios</mat-icon></button>
     <button style="float: right;" mat-button (click)="showForm =! showForm"><mat-icon>arrow_back_ios</mat-icon></button>
   </div>
