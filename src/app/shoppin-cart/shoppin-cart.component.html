@@ -67,8 +67,8 @@
     <mat-hint>primer: Hitno</mat-hint>
   </mat-form-field>
   <div class="button-container">
-    <!-- <p style="float: left;">Ukupna cena: {{totalCost}}</p> -->
-    <button style='float: right;' mat-button (click) = 'loadData();purchase();openSnackBar2();showForm=false'><mat-icon>arrow_forward_ios</mat-icon></button>
+    <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true'><mat-icon matTooltip="Polja ime i prezime, adresa, telefon i email su obavezna!">arrow_forward_ios</mat-icon></button>
+    <button style='float: right;' mat-button *ngIf="!checkForm();"(click) = 'loadData();purchase();openSnackBar2();showForm=false'><mat-icon>arrow_forward_ios</mat-icon></button>
     <button style="float: right;" mat-button (click)="showForm =! showForm"><mat-icon>arrow_back_ios</mat-icon></button>
   </div>
 </div>

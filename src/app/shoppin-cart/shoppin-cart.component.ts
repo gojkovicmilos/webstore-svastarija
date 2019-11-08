@@ -166,5 +166,12 @@ export class ShoppinCartComponent implements OnInit {
     return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
   }
 
+  checkForm(): boolean {
+    if(this.name != "" && this.address != "" && this.email != "" && this.phone != "") {
+      return false
+    }
+    return true;
+  }
+
 
 }
