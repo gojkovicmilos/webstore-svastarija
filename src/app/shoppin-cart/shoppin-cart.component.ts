@@ -17,7 +17,13 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
     transition(':leave', [
       animate('0s', style({ opacity: 0 }))
     ])
-  ]),]
+  ]),trigger('detailExpand', [
+    state('collapsed', style({height: '0px', minHeight: '0'})),
+    state('expanded', style({height: '*'})),
+    transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+  ]),
+
+  ]
 })
 export class ShoppinCartComponent implements OnInit {
   
@@ -36,6 +42,8 @@ export class ShoppinCartComponent implements OnInit {
   orderToSend:Order = new Order;
 
   totalCost:number = 0;
+
+  expandedElement: any | null;
 
   constructor(private os:OrderService, private _snackBar: MatSnackBar) { }
 
