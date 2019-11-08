@@ -27,6 +27,9 @@ export class OrderComponent implements OnInit {
     
   }
 
+  delete(id: string): void {
+    this.os.deleteOrder(id);
+  }
 
 
 }
