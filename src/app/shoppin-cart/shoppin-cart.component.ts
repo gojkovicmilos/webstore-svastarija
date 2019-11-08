@@ -181,5 +181,16 @@ export class ShoppinCartComponent implements OnInit {
     return true;
   }
 
+  getMaxPosition(): string {
+    if(this.productsWithPosition.length == 0) {
+      return String(0);
+    }
+    for(let i = 0; i < this.productsWithPosition.length; i++) {
+      if(i+1 == this.productsWithPosition.length) {
+        return String(this.productsWithPosition[i]['position']);
+      }
+    }
+  }
+
 
 }
