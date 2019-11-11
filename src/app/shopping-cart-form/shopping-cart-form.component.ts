@@ -116,7 +116,7 @@ export class ShoppingCartFormComponent implements OnInit {
   }  
 
   checkForm(): boolean {
-    if(this.name != "" && this.address != "" && this.email != "" && this.phone != "") {
+    if(this.name != "" && this.address != "" && this.email != "" && this.phone != "" && this.products.length != 0 && this.email.includes('@')) {
       return false
     }
     return true;

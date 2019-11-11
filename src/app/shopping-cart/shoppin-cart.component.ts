@@ -53,7 +53,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   appendPosition(): void {
-    if(this.products != null) {
+    if(this.products.length != 0) {
       this.productsWithPosition = this.products;
       for(let i = 0; i < this.productsWithPosition.length; i++) {
         this.productsWithPosition[i]['position'] = i + 1;
@@ -70,7 +70,7 @@ export class ShoppingCartComponent implements OnInit {
   
 
   getTotalCost() {
-    if(this.products != null) {
+    if(this.products.length != 0) {
       return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
     }
     return 0;
