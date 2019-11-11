@@ -27,8 +27,9 @@ import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductModalComponent } from './product-modal/product-modal.component';
-import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
+import { ShoppingCartComponent } from './shopping-cart/shoppin-cart.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     SecondaryNavComponent,
     HomePageComponent,
     ProductModalComponent,
-    ShoppinCartComponent
+    ShoppingCartComponent,
+    ShoppingCartFormComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

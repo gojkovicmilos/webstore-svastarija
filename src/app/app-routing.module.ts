@@ -8,7 +8,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { OrderComponent } from './order/order.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ShoppinCartComponent } from './shoppin-cart/shoppin-cart.component';
+import { ShoppingCartComponent } from './shopping-cart/shoppin-cart.component';
+import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent, data: {animation: 'HomePage'}},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'about', component: AboutUsComponent, data: {animation: 'AboutPage'}},
   {path:'contact', component: ContactComponent},
   {path:'orders', component: OrderComponent},
-  {path: 'cart', component: ShoppinCartComponent}
+  {path: 'cart', component: ShoppingCartComponent},
+  {path: 'cart/form', component: ShoppingCartFormComponent}
 
 
 ];

@@ -4,42 +4,27 @@
   height: 500px;
 
 }
-
 table {
     width: 100%;
 }
 
-.button-container {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
+
 
 .icon:hover {
     color: white;
 }
 
-.form-container > * {
-    width: 100%; 
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-top: 1.5rem;
-}
 
-mat-form-field {
-    /* margin-bottom: 1rem; */
-    margin-top: 1rem;
-}
+
 
 td {
     vertical-align: middle;
     text-align: center;
 }
-
-
-
 .mat-header-cell {
     text-align: center;
 }
+
 
 
 
@@ -47,14 +32,11 @@ tr.mat-footer-row {
   font-weight: bold;
  
 }
-
 .mat-table-sticky {
   border-top: 1px solid #e0e0e0;
 }
 
-.nastavi {
-  font-weight: bold;
-}
+
 
 
 
@@ -102,4 +84,14 @@ tr.example-detail-row {
   
   .example-element-description-attribution {
     opacity: 0.5;
+  }
+
+
+
+  
+
+
+  .empty-cart-warning {
+    text-align: center;
+    margin: 2rem;
   }

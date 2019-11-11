@@ -1,0 +1,36 @@
+<div class="form-container" fxLayout="column wrap" fxLayoutAlign="space-evenly center"  @myInsertRemoveTrigger>
+  <mat-form-field class="first-mat-form-field" appearance="outline">
+    <mat-label>Ime i prezime</mat-label>
+    <input matInput name="name" [(ngModel)]="name">
+    <mat-hint>primer: Petar Perić</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Grad i adresa</mat-label>
+    <input matInput name="address" [(ngModel)]="address">
+    <mat-hint>primer: Kosančić Ivana 15, Novi Sad</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Telefon</mat-label>
+    <input matInput name="phone" [(ngModel)]="phone">
+    <mat-hint>primer: +381/60-111-222</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>E-mail</mat-label>
+    <input matInput name="email" [(ngModel)]="email">
+    <mat-hint>primer: example@mail.com</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Poruka</mat-label>
+    <textarea matInput placeholder="Poruka(opciono)" [(ngModel)]="note"></textarea>
+    <mat-hint>primer: Hitno</mat-hint>
+  </mat-form-field>
+  <div class="button-container">
+    <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Polja ime i prezime, adresa, telefon i e-mail su obavezna!"><mat-icon>arrow_forward_ios</mat-icon></button>
+    <button style='float: right;' mat-button color="primary" *ngIf="!checkForm();"(click) = 'loadData();purchase();openSnackBar2();resetForm();homePage();'>Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
+    <button style="float: left;" mat-button color="warn" (click)="resetForm();goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
+  </div>
+</div>
