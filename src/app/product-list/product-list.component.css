@@ -8,12 +8,12 @@
     margin-bottom: 50px;
     background-color: transparent;
     float: left;
-    border: 2px solid #6A1B9A;
-    box-shadow: 0 0px 10px 0 #6A1B9A;
+    border: 1px solid royalblue;
+    box-shadow: 0 0px 8px 0 royalblue;
 }
 
 .example-card:hover {
-    box-shadow: 0 0px 36px 0 #6A1B9A;
+    box-shadow: 0 0px 24px 0 royalblue;
 }
 
 img {
@@ -22,18 +22,14 @@ img {
     background: transparent;
 }
 
-mat-tab-group {
-    padding: 20px;
-   
-}
 
 .tab:hover {
     text-decoration: none;
-    color: white;
+    color: royalblue;
 }
 
 .tab-container {
-    padding: 2rem;
+    padding: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -56,7 +52,4 @@ mat-form-field {
 .card-content-container {
     text-align: center;
 }
-
-
-
 

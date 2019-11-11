@@ -23,6 +23,8 @@ export class ProductListComponent implements OnInit {
   arr = new Array<number>(50);
 
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
+  links: string[] = ['Svi proizvodi', "Torbe", "Rančevi", "Novčanici"];
+  activeLink = this.links[0];
 
   productName:string = "";
   productDescription:string = "";
@@ -113,12 +115,17 @@ export class ProductListComponent implements OnInit {
 
   showByCat(c)
   {
+    if(c != 'Svi proizvodi') {
 
-    this.filteredProducts = [];
-    this.products.forEach(element => {
-      if(element.category == c)
-      this.filteredProducts.push(element);
-    });
+      this.filteredProducts = [];
+      this.products.forEach(element => {
+        if(element.category == c)
+        this.filteredProducts.push(element);
+      });
+    }
+    else {
+      this.showAll();
+    }
   }
 
 showAll()
