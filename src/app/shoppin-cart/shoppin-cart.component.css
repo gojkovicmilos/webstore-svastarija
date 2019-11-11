@@ -1,5 +1,7 @@
 .table-container {
   margin: 0.5rem;
+  overflow: auto;
+  height: 500px;
 
 }
 
@@ -38,22 +40,6 @@ td {
 .mat-header-cell {
     text-align: center;
 }
-
-.sticky {
-    position: sticky;
-    bottom: 0;
-    text-align: center;
-    background-color: silver;
-    margin-right: 2rem;
-    margin-left: 2rem;
-    background: #424242;
-    border: 1px solid silver;
-}
-
-.sticky:hover {
-    box-shadow: 0 0px 4px 0 silver;
-}
-
 
 
 
