@@ -8,7 +8,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { OrderComponent } from './order/order.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ShoppingCartComponent } from './shopping-cart/shoppin-cart.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
 
 const routes: Routes = [

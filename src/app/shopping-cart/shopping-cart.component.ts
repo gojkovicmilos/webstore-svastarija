@@ -4,9 +4,9 @@ import { MatSnackBar } from '@angular/material';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-shoppin-cart',
-  templateUrl: './shoppin-cart.component.html',
-  styleUrls: ['./shoppin-cart.component.css'],
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.css'],
   animations: [trigger('myInsertRemoveTrigger', [
     transition(':enter', [
       style({ opacity: 0 }),
