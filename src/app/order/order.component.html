@@ -1,7 +1,7 @@
 <div *ngFor="let o of orders; let i = index">
     <h3>Order no {{i+1}}</h3>
     <p>{{o.id}}</p>
-    <p>Ime kupca: {{o.customerName}}</p>
+    <p>Ime i prezime kupca: {{o.customerFirstName}} {{o.customerLastName}}</p>
     <p *ngFor="let prod of o.products; let j = index">
         Product no {{j+1}}: <span>{{prod.id}} --> {{prod.name}}</span>
     </p>

@@ -1,6 +1,32 @@
-.form-container > * {
+/* .form-container > * {
     width: 100%; 
     padding-left: 2rem;
     padding-right: 2rem;
     margin-top: 1.5rem;
-}
+} */
+
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+
+
+  .full-width {
+    width: 100%;
+  }
+  
+  .shipping-card {
+    min-width: 120px;
+    margin: 20px auto;
+  }

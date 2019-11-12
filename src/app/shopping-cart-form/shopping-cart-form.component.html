@@ -1,36 +1,116 @@
-<div class="form-container" fxLayout="column wrap" fxLayoutAlign="space-evenly center"  @myInsertRemoveTrigger>
-  <mat-form-field class="first-mat-form-field" appearance="outline">
-    <mat-label>Ime i prezime</mat-label>
-    <input matInput name="name" [(ngModel)]="name">
-    <mat-hint>primer: Petar Perić</mat-hint>
-  </mat-form-field>
+<mat-card @myInsertRemoveTrigger class="shipping-card">
+  <mat-card-header>
+    <mat-card-title>Unesite Vaše podatke:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+            <mat-label>Ime </mat-label>
+            <input matInput name="firstName" [(ngModel)]="firstName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Prezime </mat-label>
+            <input matInput name="lastName" [(ngModel)]="lastName">
+          </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Ulica i broj</mat-label>
+          <input matInput name="address" [(ngModel)]="address">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Grad</mat-label>
+          <input matInput name="city" [(ngModel)]="city">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Postanski kod</mat-label>
+          <input matInput name="postalCode" maxlength="5" placeholder="Postanski kod" [(ngModel)]="postalCode">
+          <mat-hint align="end">{{postalCode.length}} / 5</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <mat-label>Drzava</mat-label>
+            <mat-select placeholder="Drzava" [(ngModel)]="state">
+                <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                  {{ state.name }}
+                </mat-option>
+              </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Telefon</mat-label>
+          <input matInput name="phone" [(ngModel)]="phone">
+          <mat-hint>primer: +381/60-111-222</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>E-mail</mat-label>
+          <input matInput name="email" [(ngModel)]="email">
+          <mat-hint>primer: example@mail.com</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" *ngIf="!showExtraContactInfoFormField">
+      <div class="col">
+        <button mat-button type="button" (click)="showExtraContactInfoFormField = !showExtraContactInfoFormField">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="row" *ngIf="showExtraContactInfoFormField" @myInsertRemoveTrigger>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Telefon 2</mat-label>
+          <input matInput name="phone" [(ngModel)]="phone">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>E-mail 2</mat-label>
+          <input matInput name="email" [(ngModel)]="email">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row" *ngIf="showExtraContactInfoFormField">
+      <div class="col">
+        <button mat-button type="button" (click)="showExtraContactInfoFormField = !showExtraContactInfoFormField">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Poruka</mat-label>
+          <textarea matInput placeholder="Poruka(opciono)" [(ngModel)]="note"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    
 
-  <mat-form-field appearance="outline">
-    <mat-label>Grad i adresa</mat-label>
-    <input matInput name="address" [(ngModel)]="address">
-    <mat-hint>primer: Kosančić Ivana 15, Novi Sad</mat-hint>
-  </mat-form-field>
+    <div class="row">
+      <div class="col">
+        <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Podaci vezani za ime i prezime, adresu, telefon i e-mail su obavezni!"><mat-icon>arrow_forward_ios</mat-icon></button>
+        <button style='float: right;' mat-button color="primary" *ngIf="!checkForm();"(click) = 'loadData();purchase();onSubmit();resetForm();homePage();'>Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
+        <button style="float: left;" mat-button color="warn" (click)="resetForm();goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
+      </div>
+    </div>
+  </mat-card-content>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Telefon</mat-label>
-    <input matInput name="phone" [(ngModel)]="phone">
-    <mat-hint>primer: +381/60-111-222</mat-hint>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>E-mail</mat-label>
-    <input matInput name="email" [(ngModel)]="email">
-    <mat-hint>primer: example@mail.com</mat-hint>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Poruka</mat-label>
-    <textarea matInput placeholder="Poruka(opciono)" [(ngModel)]="note"></textarea>
-    <mat-hint>primer: Hitno</mat-hint>
-  </mat-form-field>
-  <div class="button-container">
-    <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Polja ime i prezime, adresa, telefon i e-mail su obavezna!"><mat-icon>arrow_forward_ios</mat-icon></button>
-    <button style='float: right;' mat-button color="primary" *ngIf="!checkForm();"(click) = 'loadData();purchase();openSnackBar2();resetForm();homePage();'>Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
-    <button style="float: left;" mat-button color="warn" (click)="resetForm();goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
-  </div>
-</div>
+</mat-card>

@@ -25,18 +25,26 @@ export class ShoppingCartFormComponent implements OnInit {
 
   products:Product[] = [];
 
-  name:string = "";
+  firstName:string = "";
+  lastName:string = "";
   address:string = "";
-  note:string = "";
+  city:string = "";
+  state: string = "";
+  postalCode: string = "";
   phone:string = "";
   email:string = "";
+  phone2: string = "";
+  email2: string = "";
+  note:string = "";
+
 
   orderToSend:Order = new Order;
 
   totalCost:number = 0;
 
+  showExtraContactInfoFormField: boolean = false;
 
-  constructor(private os:OrderService, private _snackBar: MatSnackBar, private _location: Location, private _router: Router) { }
+  constructor(private os:OrderService, private _location: Location, private _router: Router) { }
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
@@ -44,15 +52,21 @@ export class ShoppingCartFormComponent implements OnInit {
   }
 
   loadData() {
+    this.orderToSend.customerFirstName = this.firstName;
+    this.orderToSend.customerLastName = this.lastName;
     this.orderToSend.customerAddress = this.address;
+    this.orderToSend.customerCity = this.city;
+    this.orderToSend.customerPostalCode = this.postalCode;
+    this.orderToSend.customerState = this.state;
     this.orderToSend.customerEmail = this.email;
-    this.orderToSend.customerName = this.name;
-    this.orderToSend.customerNote = this.note;
     this.orderToSend.customerPhone = this.phone;
+    this.orderToSend.customerEmail2 = this.email2;
+    this.orderToSend.customerPhone2 = this.phone2;
+    this.orderToSend.customerNote = this.note;
     this.orderToSend.date = new Date();
     this.orderToSend.price = this.totalCost;
     this.orderToSend.products = this.products;
-    this.orderToSend.title = "newOrder " + this.name;
+    this.orderToSend.title = "newOrder " + this.firstName + " " + this.lastName;
 
     //console.log(this.orderToSend);
 
@@ -62,11 +76,17 @@ export class ShoppingCartFormComponent implements OnInit {
   {
     let record = {};
 
+    record['customerFirstName'] = this.orderToSend.customerFirstName;
+    record['customerLastName'] = this.orderToSend.customerLastName;
     record['customerAddress'] = this.orderToSend.customerAddress;
+    record['customerCity'] = this.orderToSend.customerCity;
+    record['customerPostalCode'] = this.orderToSend.customerPostalCode;
+    record['customerState'] = this.orderToSend.customerState;
     record['customerEmail'] = this.orderToSend.customerEmail;
-    record['customerName'] = this.orderToSend.customerName;
-    record['customerNote'] = this.orderToSend.customerNote;
     record['customerPhone'] = this.orderToSend.customerPhone;
+    record['customerEmail2'] = this.orderToSend.customerEmail2;
+    record['customerPhone2'] = this.orderToSend.customerPhone2;
+    record['customerNote'] = this.orderToSend.customerNote;
     record['date'] = this.orderToSend.date;
     record['price'] = this.orderToSend.price;
 
@@ -79,18 +99,12 @@ export class ShoppingCartFormComponent implements OnInit {
     console.log(prs);
     record['products'] = prs;
     record['title'] = this.orderToSend.title;
+    record['delivered'] = this.orderToSend.delivered;
 
     this.os.createOrder(record).then(resp =>
       {
-        this.orderToSend.customerAddress = "";
-        this.orderToSend.customerEmail = "";
-        this.orderToSend.customerNote = "";
-        this.orderToSend.customerName = "";
-        this.orderToSend.customerPhone = "";
-        this.orderToSend.price = 0;
-        this.orderToSend.date = null;
-        this.orderToSend.products = [];
-        this.orderToSend.title = "";
+       
+        this.orderToSend = new Order;
         localStorage.setItem("cart", "[]");
         this.resetForm();
         this.totalCost = 0;
@@ -108,30 +122,36 @@ export class ShoppingCartFormComponent implements OnInit {
   }
 
   resetForm(): void {
-    this.name = "";
+    this.firstName = "";
+    this.lastName = "";
     this.address = "";
+    this.city = "";
+    this.postalCode = "";
+    this.state = "";
     this.email = "";
+    this.email2 = "";
     this.phone = "";
+    this.phone2 = "";
     this.note = "";
   }  
 
   checkForm(): boolean {
-    if(this.name != "" && this.address != "" && this.email != "" && this.phone != "" && this.products.length != 0 && this.email.includes('@')) {
-      return false
+    if(this.firstName != "" && this.lastName != "" && this.address != "" &&
+      this.city != "" && this.postalCode != "" && this.state != "" && this.email != "" && this.phone != "" && 
+      this.products.length != 0 && this.email.includes('@')) {
+       return false
     }
     return true;
-  }
+   }
 
 
   getTotalCost() {
     return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
   }
 
-  openSnackBar2( ) {
-    this._snackBar.open("Uspešno poručeno!", '', {
-      duration: 3000,
-    });
-    
+ 
+  onSubmit() {
+    alert('Hvala na saradnji!');
   }
 
   goBack() {
@@ -142,6 +162,11 @@ export class ShoppingCartFormComponent implements OnInit {
   homePage() {
     this._router.navigate(['']);
   }
+
+  states = [
+    {name: 'Srbija', abbreviation: 'SRB'},
+    {name: 'Bosna i Hercegovina', abbreviation: 'BiH'}
+  ]
 
 
  
