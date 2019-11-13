@@ -51,7 +51,7 @@ tr.example-detail-row {
   }
   
   tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
+    background: #e91e63;
   }
   
   .example-element-row td {
