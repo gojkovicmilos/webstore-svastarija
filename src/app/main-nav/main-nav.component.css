@@ -38,3 +38,10 @@
 .fill-space {
   flex: 1 1 auto;
 }
+
+.box-shadow {
+  box-shadow: 0px 0px 10px #78909c;
+  -webkit-box-shadow: 0px 0px 10px #78909c;
+  -moz-box-shadow: 0px 0px 10px #78909c;
+
+}

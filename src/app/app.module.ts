@@ -23,7 +23,6 @@ import { ContactComponent } from './contact/contact.component';
 import { OrderComponent } from './order/order.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { SecondaryNavComponent } from './secondary-nav/secondary-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductModalComponent } from './product-modal/product-modal.component';
@@ -45,7 +44,6 @@ import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-fo
     ContactComponent,
     OrderComponent,
     MainNavComponent,
-    SecondaryNavComponent,
     HomePageComponent,
     ProductModalComponent,
     ShoppingCartComponent,
