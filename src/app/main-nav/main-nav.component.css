@@ -1,5 +1,9 @@
 .sidenav-container {
   height: 100%;
+  width: 100%;
+  position: absolute;
+
+  
 }
 
 .sidenav {
@@ -24,6 +28,8 @@
 .upperLinks {
   text-decoration: none;
 }
+
+
 
 .upperLinks:hover {
   color: white;
