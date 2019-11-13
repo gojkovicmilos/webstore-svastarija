@@ -108,7 +108,7 @@
       <div class="col">
         <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Podaci vezani za ime i prezime, adresu, telefon i e-mail su obavezni!"><mat-icon>arrow_forward_ios</mat-icon></button>
         <button style='float: right;' mat-button color="primary" *ngIf="!checkForm();"(click) = 'loadData();purchase();onSubmit();resetForm();homePage();'>Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
-        <button style="float: left;" mat-button color="warn" (click)="resetForm();goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
+        <button style="float: left;" mat-button color="primary" (click)="resetForm();goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
       </div>
     </div>
   </mat-card-content>

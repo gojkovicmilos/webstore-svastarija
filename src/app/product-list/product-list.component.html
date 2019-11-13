@@ -47,7 +47,7 @@
               </div>
             </mat-select> -->
           </mat-form-field>
-          <a class="icon" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); openSnackBar(product.name, product.amount); resetNumber();' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
+          <a color="primary" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); openSnackBar(product.name, product.amount); resetNumber();' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
           <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
         </div>
       </mat-card-actions>
