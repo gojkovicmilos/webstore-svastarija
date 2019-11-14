@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { slideInAnimation } from '../animations';
 import { Product } from '../product';
 import { UserService } from '../user.service';
@@ -26,7 +26,7 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private us:UserService) {
+  constructor(private breakpointObserver: BreakpointObserver, private us:UserService, private _router: Router) {
     this.user = localStorage.getItem("user");
   }
 
@@ -45,6 +45,7 @@ export class MainNavComponent {
   signOut()
   {
     this.us.logout();
+    this._router.navigate([""]);
   }
 
   returnNumber()

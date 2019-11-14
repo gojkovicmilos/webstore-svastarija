@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Observable }    from 'rxjs/Observable';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'my-app',
@@ -11,7 +12,7 @@ import { UserService } from '../user.service';
 export class LoginComponent {
 
   formGroup: FormGroup;
-  constructor(private formBuilder: FormBuilder, private us:UserService) { }
+  constructor(private formBuilder: FormBuilder, private us:UserService, private _router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.createForm();
@@ -46,8 +47,11 @@ export class LoginComponent {
 
     
     this.us.login(post.username, post.password);
-
     console.log(localStorage.getItem("user"));
+    this._snackBar.open("Prijavljen je admin!", '', {
+      duration: 3000,
+    });
+    this._router.navigate([""]);
     
     
   }

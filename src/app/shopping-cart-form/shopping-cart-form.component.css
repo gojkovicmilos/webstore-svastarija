@@ -1,12 +1,3 @@
-/* .form-container > * {
-    width: 100%; 
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-top: 1.5rem;
-} */
-
-
-
 .row {
     display: flex;
     flex-direction: row;
@@ -29,4 +20,8 @@
   .shipping-card {
     min-width: 120px;
     margin: 20px auto;
+  }
+
+  .card-header {
+    text-align: center;
   }
