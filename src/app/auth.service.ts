@@ -10,7 +10,7 @@ export class AuthService implements CanActivate {
   constructor(private _router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem("user") != "") {
+    if (UserService.loggedIn) {
       return true;
     } else {
       this._router.navigate(['404']);

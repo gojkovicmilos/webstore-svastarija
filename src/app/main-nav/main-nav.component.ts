@@ -36,8 +36,8 @@ export class MainNavComponent {
 
   userLogged()
   {
-    if(localStorage.getItem("user") == "")
-    return false;
+    if(!UserService.loggedIn)
+      return false;
     else return true;
   }
 
