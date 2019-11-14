@@ -74,5 +74,10 @@ export class OrderComponent implements OnInit {
     
   }
 
+  setDelivered(id: string)
+  {
+    this.os.setDelivered(id);
+  }
+
 
 }

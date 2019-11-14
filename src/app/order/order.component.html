@@ -8,6 +8,9 @@
     </p>
     <p>{{o.date.seconds * 1000 | date:'MM-dd-yyyy'}}</p>
     <p>{{o.price}} RSD</p>
+    <h1 *ngIf="!o.delivered">Za isporuku</h1>
+    <h1 *ngIf="o.delivered">Isporučeno</h1>
     <button (click)="delete(o.id)">Ukloni</button>
+    <button *ngIf="!o.delivered" (click)="setDelivered(o.id)">Isporučeno</button>
     <hr>
 </div>

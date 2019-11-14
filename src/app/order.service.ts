@@ -30,10 +30,13 @@ export class OrderService {
   }
  
  
-  updateOrder(recordId,record){
-    this.fs.doc('orders/' + recordId).update(record);
+  setDelivered(recordId){
+    this.fs.doc('orders/' + recordId).set({delivered: true}, {merge: true});
   }
  
+
+  
+
   deleteOrder(recordId) {
     this.fs.doc('orders/' + recordId).delete();
   }
