@@ -65,7 +65,7 @@ export class ShoppingCartFormComponent implements OnInit {
     this.orderToSend.customerNote = this.note;
     this.orderToSend.date = new Date();
     this.orderToSend.price = this.totalCost;
-    this.orderToSend.productso = this.products;
+    this.orderToSend.productsO = this.products;
     this.orderToSend.title = "newOrder " + this.firstName + " " + this.lastName;
 
     //console.log(this.orderToSend);

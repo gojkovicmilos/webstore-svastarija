@@ -3,7 +3,7 @@
     <p>{{o.id}}</p>
     <p>Ime i prezime kupca: {{o.customerFirstName}} {{o.customerLastName}}</p>
 
-    <p *ngFor="let prod of o.productso; let j = index">
+    <p *ngFor="let prod of o.productsO; let j = index">
         Product no {{j+1}}: <span>{{prod.id}} --> {{prod.name}}</span>
     </p>
     <p>{{o.date.seconds * 1000 | date:'MM-dd-yyyy'}}</p>

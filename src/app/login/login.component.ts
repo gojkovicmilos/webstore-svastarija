@@ -44,16 +44,10 @@ export class LoginComponent {
   }
 
   onSubmit(post) {
-
-    
     this.us.login(post.username, post.password);
-    console.log(localStorage.getItem("user"));
     this._snackBar.open("Prijavljen je admin!", '', {
       duration: 3000,
     });
-    this._router.navigate([""]);
-    
-    
+    this._router.navigate([""]); 
   }
-
 }

@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
 
         });
 
-        order.productso = this.np;
+        order.productsO = this.np;
         this.np = [];
 
       });

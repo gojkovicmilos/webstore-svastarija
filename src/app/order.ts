@@ -18,5 +18,5 @@ export class Order {
     products: string[];
     title: string;
     delivered: boolean = false;
-    productso:Product[];
+    productsO:Product[];
 }
