@@ -15,7 +15,8 @@ export class Order {
     customerNote: string;
     date: Date;
     price: number;
-    products: Product[];
+    products: string[];
     title: string;
     delivered: boolean = false;
+    productso:Product[];
 }

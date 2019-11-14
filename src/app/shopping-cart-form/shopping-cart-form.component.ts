@@ -65,7 +65,7 @@ export class ShoppingCartFormComponent implements OnInit {
     this.orderToSend.customerNote = this.note;
     this.orderToSend.date = new Date();
     this.orderToSend.price = this.totalCost;
-    this.orderToSend.products = this.products;
+    this.orderToSend.productso = this.products;
     this.orderToSend.title = "newOrder " + this.firstName + " " + this.lastName;
 
     //console.log(this.orderToSend);
@@ -93,7 +93,7 @@ export class ShoppingCartFormComponent implements OnInit {
     let prs = [];
     this.products.forEach(element => {
 
-      prs.push("products/"+ element.id);
+      prs.push(element.id);
       
     });
     console.log(prs);
