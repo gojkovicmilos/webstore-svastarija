@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from '../animations';
 import { Product } from '../product';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -17,6 +18,7 @@ import { Product } from '../product';
 export class MainNavComponent {
 
   num: number = 0;
+  user: String;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -24,10 +26,25 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private us:UserService) {
+    this.user = localStorage.getItem("user");
+  }
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+  userLogged()
+  {
+    if(localStorage.getItem("user") == "")
+    return false;
+    else return true;
+  }
+
+
+  signOut()
+  {
+    this.us.logout();
   }
 
   returnNumber()

@@ -10,6 +10,7 @@ import { OrderComponent } from './order/order.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
   {path:'', component: HomePageComponent, data: {animation: 'HomePage'}},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'contact', component: ContactComponent},
   {path:'orders', component: OrderComponent},
   {path: 'cart', component: ShoppingCartComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'cart/form', component: ShoppingCartFormComponent}
 
 

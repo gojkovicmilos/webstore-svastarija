@@ -9,6 +9,8 @@
       <a mat-list-item  routerLink='products' routerLinkActive='active'>Proizvodi</a>
       <a mat-list-item  routerLink='about' routerLinkActive='active'>O nama</a>
       <a mat-list-item  routerLink='contact' routerLinkActive='active'>Kontakt</a>
+      <a mat-list-item  routerLink='login' routerLinkActive='active' *ngIf="!userLogged()">Prijavi Se</a>
+      
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -23,6 +25,8 @@
       </button>
       <a class="upperLinks" mat-button routerLink="" routerLinkActive="active"><img class="main-logo" src="../assets/images/LOGO 4.svg" height="50px" width="50px"></a>
       <div class="fill-space"></div>
+      <p *ngIf="userLogged()">Welcome {{user}}</p>
+      <button (click)="signOut()" *ngIf="userLogged()">Odjavi Se</button>
       <a class="upperLinks" mat-button routerLink='cart' routerLinkActive='active'><mat-icon class="example-tab-icon" [matBadge]="returnNumber()" matBadgeColor="accent">shopping_cart</mat-icon></a>
     </mat-toolbar>
     <!-- Add Content Here -->

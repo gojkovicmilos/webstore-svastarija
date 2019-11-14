@@ -29,6 +29,9 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-fo
     HomePageComponent,
     ProductModalComponent,
     ShoppingCartComponent,
-    ShoppingCartFormComponent
+    ShoppingCartFormComponent,
+    LoginComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -59,7 +63,9 @@ import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-fo
     FormsModule,
     LayoutModule,
     NgbModule, 
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    AngularFireAuthModule
   ],
   providers: [ProductService, UserService, AngularFireStorage],
   bootstrap: [AppComponent],

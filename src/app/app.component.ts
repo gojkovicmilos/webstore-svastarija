@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent{
   constructor(){
+    localStorage.setItem("user", "");
+    localStorage.setItem("cart", "[]");
   }
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
 
