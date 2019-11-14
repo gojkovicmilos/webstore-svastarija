@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Product } from './product';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
+import { finalize, tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,17 @@ export class ProductService {
 
   getProductById(id: string) {
     return this.fs.doc('products/'+id).snapshotChanges();
+  }
+
+  getProduct(id: string): Observable<Product> {
+    const productsDocuments = this.fs.doc<Product>('products/' + id);
+    return productsDocuments.snapshotChanges()
+      .pipe(
+        map(changes => {
+          const data = changes.payload.data();
+          const id = changes.payload.id;
+          return { id, ...data };
+        }))
   }
 
   createProduct(record) {

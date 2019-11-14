@@ -14,10 +14,22 @@ import { Product } from '../product';
 export class OrderComponent implements OnInit {
   orders: Order[];
   products: Product[] = [];
+  np:Product[] = [];
 
   constructor(private os: OrderService, private ps:ProductService) { }
 
   ngOnInit() {
+
+    this.ps.getProducts().subscribe(actionArray =>{
+
+      this.products = actionArray.map(item =>{
+        return{
+          id: item.payload.doc.id,
+          ...item.payload.doc.data() as Product}
+          
+      });
+    });
+
     this.os.getOrders().subscribe(actionArray =>{
 
       this.orders = actionArray.map(item =>{
@@ -26,40 +38,28 @@ export class OrderComponent implements OnInit {
           ...item.payload.doc.data() as Order}
       });
 
-      this.orders.forEach(element => {
-        let product = new Product();
-        element.products.forEach(el =>{
-  
-  
-          this.ps.getProductById(el).subscribe(actionArray =>{
+      this.orders.forEach(order =>{
 
-        
-            
-          
-          product.name = actionArray.payload.get('name');
-          product.price = actionArray.payload.get('price');
-          product.category = actionArray.payload.get('category');
-          product.amount = actionArray.payload.get('amount');
-          product.description = actionArray.payload.get('description');
-          product.picture = actionArray.payload.get('pic');
-          
+        order.products.forEach(product =>{
+
+          this.products.forEach(p =>{
+
+            if(p.id == product)
+            {
+            this.np.push(p);
+            }
           });
 
-        this.products.push(product);
+        });
 
-      
-     
+        order.productso = this.np;
+        this.np = [];
 
-      
-      
-  
-        
-  
-  
       });
-      element.productso = this.products;
-      this.products = [];
-      });
+
+
+
+
     });
 
     
