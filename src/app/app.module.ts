@@ -32,6 +32,7 @@ import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-fo
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
     ProductModalComponent,
     ShoppingCartComponent,
     ShoppingCartFormComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

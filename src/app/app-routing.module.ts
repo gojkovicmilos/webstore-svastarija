@@ -11,6 +11,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-form.component';
 import { LoginComponent } from "./login/login.component";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthService } from './auth.service';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent, data: {animation: 'HomePage'}},
@@ -20,16 +22,19 @@ const routes: Routes = [
   {path:'products/details', component: ProductComponent},
   {path:'about', component: AboutUsComponent, data: {animation: 'AboutPage'}},
   {path:'contact', component: ContactComponent},
-  {path:'orders', component: OrderComponent},
+  {path:'orders', component: OrderComponent, canActivate: [AuthService]},
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'cart/form', component: ShoppingCartFormComponent}
+  {path: 'cart/form', component: ShoppingCartFormComponent},
+  {path: '**', component: PageNotFoundComponent}
+
 
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthService]
 })
 export class AppRoutingModule { }

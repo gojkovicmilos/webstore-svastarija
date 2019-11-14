@@ -33,7 +33,7 @@ export class UserService {
       .then(value => {
         console.log('Nice, it worked!');
 
-        localStorage.setItem("user", value.user.displayName);
+        localStorage.setItem("user", value.user.email);
       })
       .catch(err => {
         console.log('Something went wrong:',err.message);
