@@ -7,10 +7,10 @@ import { UserService } from './user.service';
 })
 export class AuthService implements CanActivate {
 
-  constructor(private _router: Router, private us: UserService) { }
+  constructor(private _router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem("user") === "test@test.com" || localStorage.getItem("user") === "unijawebshop@gmail.com") {
+    if (localStorage.getItem("user") != "") {
       return true;
     } else {
       this._router.navigate(['404']);
