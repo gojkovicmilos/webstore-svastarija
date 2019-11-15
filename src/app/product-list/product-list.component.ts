@@ -4,6 +4,7 @@ import { Product } from '../product';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-product-list',
@@ -22,26 +23,24 @@ export class ProductListComponent implements OnInit {
   num: number = 1;
   arr = new Array<number>(50);
 
-  categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
   links: string[] = ['Svi proizvodi', "Torbe", "Rančevi", "Novčanici"];
   activeLink = this.links[0];
 
-  productName:string = "";
-  productDescription:string = "";
-  productPrice:number;
-  productAmount:number;
-  productCategory:string = "";
-  productImage:string = "";
+  // productName:string = "";
+  // productDescription:string = "";
+  // productPrice:number;
+  // productAmount:number;
+  // productCategory:string = "";
+  // productImage:string = "";
 
-  file:File;
+  // file:File;
 
-  menuOpened:boolean = false;
+  
 
-  breakPoint: number = 4;
-  watcher: Subscription;
+ 
 
 
-  constructor(private ps: ProductService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private ps: ProductService, private _snackBar: MatSnackBar, private us: UserService) { }
 
   ngOnInit() {
     this.ps.getProducts().subscribe(actionArray =>{
@@ -56,22 +55,9 @@ export class ProductListComponent implements OnInit {
     });
     this.fillArray();
 
-    this.breakPoint = (window.innerWidth <= 400) ? 1 : 4;
-  
-    
-  }
-
-  onResize(event) {
-    this.breakPoint = (event.target.innerWidth <= 400) ? 1 : 4;
   }
 
  
-
-  openMenu()
-  {
-    this.menuOpened = !this.menuOpened;
-
-  }
 
   fillArray(): void {
     for(let i = 0; i < 50; i++) {
@@ -79,19 +65,19 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
+  // onFileSelected() {
+  //   const inputNode: any = document.querySelector('#file');
   
-    if (typeof (FileReader) !== 'undefined') {
-      const reader = new FileReader();
+  //   if (typeof (FileReader) !== 'undefined') {
+  //     const reader = new FileReader();
   
-      reader.onload = (e: any) => {
-        this.file = e.target.result;
-      };
+  //     reader.onload = (e: any) => {
+  //       this.file = e.target.result;
+  //     };
   
-      reader.readAsArrayBuffer(inputNode.files[0]);
-    }
-  }
+  //     reader.readAsArrayBuffer(inputNode.files[0]);
+  //   }
+  // }
 
   addToCart(productId)
   {
@@ -133,35 +119,37 @@ showAll()
 this.filteredProducts = this.products;
 }
 
-  createProduct()
-  {
+
+
+  // createProduct()
+  // {
     
-    this.productImage = localStorage.getItem("imgURL");
+  //   this.productImage = localStorage.getItem("imgURL");
 
-    console.log(this.productImage.search("test%2F"));
+  //   console.log(this.productImage.search("test%2F"));
     
-    let record = {};
+  //   let record = {};
 
-    record['pic'] = this.productImage.replace("/test%2F", "/test%2Fthumbnails%2F").replace(".jpg", "_400x400.jpg");
-    record['name'] = this.productName;
-    record['price'] = this.productPrice;
-    record['category'] = this.productCategory;
-    record['description'] = this.productDescription;
-    record['amount'] = this.productAmount;
-    this.ps.createProduct(record).then(resp =>{
-      this.productName = "";
-      this.productPrice = 0;
-      this.productDescription = "";
-      this.productCategory = "";
-      this.productAmount = 0;
-      this.productImage = "";
-      console.log(resp);
-    }).catch(error => {
-      console.log(error);
-    });
-  }
+  //   record['pic'] = this.productImage.replace("/test%2F", "/test%2Fthumbnails%2F").replace(".jpg", "_400x400.jpg");
+  //   record['name'] = this.productName;
+  //   record['price'] = this.productPrice;
+  //   record['category'] = this.productCategory;
+  //   record['description'] = this.productDescription;
+  //   record['amount'] = this.productAmount;
+  //   this.ps.createProduct(record).then(resp =>{
+  //     this.productName = "";
+  //     this.productPrice = 0;
+  //     this.productDescription = "";
+  //     this.productCategory = "";
+  //     this.productAmount = 0;
+  //     this.productImage = "";
+  //     console.log(resp);
+  //   }).catch(error => {
+  //     console.log(error);
+  //   });
+  // }
 
-  deleteProduct(productId)
+  deleteProduct(productId: string)
   {
     this.ps.deleteProduct(productId);
   }
@@ -180,6 +168,16 @@ this.filteredProducts = this.products;
         duration: 3000,
       });
     } 
+  }
+
+  openSnackBar2(productName: string) {
+    this._snackBar.open("Proizvod " + productName + "je uspešno obrisan!", '', {
+      duration: 3000,
+    });
+  }
+
+  userLogged() {
+    return this.us.isLoggedIn();
   }
 
 }

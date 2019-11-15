@@ -28,9 +28,6 @@
         </mat-card-content>
       </div>
       <mat-card-actions>
-        <!-- <button mat-button (click) = 'store(product.id)'  routerLink="details">DETALJI</button> -->
-        <!-- <button mat-button (click) = 'addToCart(product.id)' [disabled]="(product.amount == 0)" >DODAJ U KORPU</button> -->
-        <!-- <input [(ngModel)]="prodNum" name="prodNum" type="number" placeholder="Kolicina"> -->
         <div class="card-actions">
           <mat-form-field>
             <mat-label>Kolicina</mat-label>
@@ -48,7 +45,8 @@
             </mat-select> -->
           </mat-form-field>
           <a color="primary" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); openSnackBar(product.name, product.amount); resetNumber();' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
-          <!-- <button mat-button color="warn" (click)="deleteProduct(product.id)">Obriši</button> -->
+          <a color="primary" *ngIf="userLogged()"  (click)='deleteProduct(product.id); openSnackBar2(product.name); resetNumber();' mat-button ><mat-icon class="example-tab-icon">delete</mat-icon></a>
+          
         </div>
       </mat-card-actions>
       
