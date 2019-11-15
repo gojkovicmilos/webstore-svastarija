@@ -28,7 +28,9 @@ const routes: Routes = [
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cart/form', component: ShoppingCartFormComponent},
-  {path: '**', component: PageNotFoundComponent}
+  {path: '404', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '404'}
+
 
 
 

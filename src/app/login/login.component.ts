@@ -45,6 +45,10 @@ export class LoginComponent {
 
   onSubmit(post) {
     this.us.logIn(post.username, post.password); 
+    this._router.navigate(['']);
+    this.formGroup.reset();
+    
+  
   }
 
   
