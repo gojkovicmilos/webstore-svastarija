@@ -7,10 +7,10 @@ import { UserService } from './user.service';
 })
 export class AuthService implements CanActivate {
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private us: UserService) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (UserService.loggedIn) {
+  canActivate(): boolean {
+    if (this.us.isLoggedIn()) {
       return true;
     } else {
       this._router.navigate(['404']);

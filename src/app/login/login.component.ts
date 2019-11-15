@@ -44,10 +44,8 @@ export class LoginComponent {
   }
 
   onSubmit(post) {
-    this.us.login(post.username, post.password);
-    this._snackBar.open("Prijavljen je admin!", '', {
-      duration: 3000,
-    });
-    this._router.navigate([""]); 
+    this.us.login(post.username, post.password); 
   }
+
+  
 }

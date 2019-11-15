@@ -36,9 +36,10 @@ export class MainNavComponent {
 
   userLogged()
   {
-    if(!UserService.loggedIn)
-      return false;
-    else return true;
+    if(this.us.isLoggedIn()) {
+      return true;
+    }
+    return false;
   }
 
 

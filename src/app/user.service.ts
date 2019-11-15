@@ -7,8 +7,6 @@ import * as firebase from 'firebase/app';
 })
 export class UserService {
 
-  static loggedIn = false;
-
   user: Observable<firebase.User>;
   constructor(private fs: AngularFireAuth) {
 
@@ -34,7 +32,6 @@ export class UserService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
-        UserService.loggedIn = true;
         console.log(value.user.email);
       })
       .catch(err => {
@@ -44,7 +41,14 @@ export class UserService {
 
   logout() {
     this.fs.auth.signOut();
-    UserService.loggedIn = false; 
+  }
+
+  isLoggedIn() {
+    let user = this.fs.auth.currentUser;
+    if(user) {
+      return true;
+    }
+    return false;
   }
 
 }
