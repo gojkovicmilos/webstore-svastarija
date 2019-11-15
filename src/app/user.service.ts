@@ -14,7 +14,7 @@ export class UserService {
    }
 
 
-   signup(email: string, password: string) {
+   signUp(email: string, password: string) {
     this.fs
       .auth
       .createUserWithEmailAndPassword(email, password)
@@ -26,7 +26,7 @@ export class UserService {
       });    
   }
 
-  login(email: string, password: string) {
+  logIn(email: string, password: string) {
     this.fs
       .auth
       .signInWithEmailAndPassword(email, password)
@@ -39,7 +39,7 @@ export class UserService {
       });
   }
 
-  logout() {
+  logOut() {
     this.fs.auth.signOut();
   }
 

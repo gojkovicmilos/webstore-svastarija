@@ -37,16 +37,13 @@ export class MainNavComponent {
 
   userLogged()
   {
-    if(this.us.isLoggedIn()) {
-      return true;
-    }
-    return false;
+    return this.us.isLoggedIn();
   }
 
 
   signOut()
   {
-    this.us.logout();
+    this.us.logOut();
     this._router.navigate([""]);
   }
 

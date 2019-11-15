@@ -44,7 +44,7 @@ export class LoginComponent {
   }
 
   onSubmit(post) {
-    this.us.login(post.username, post.password); 
+    this.us.logIn(post.username, post.password); 
   }
 
   
