@@ -13,6 +13,7 @@ import { ShoppingCartFormComponent } from './shopping-cart-form/shopping-cart-fo
 import { LoginComponent } from "./login/login.component";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthService } from './auth.service';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent, data: {animation: 'HomePage'}},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'about', component: AboutUsComponent, data: {animation: 'AboutPage'}},
   {path:'contact', component: ContactComponent},
   {path:'orders', component: OrderComponent, canActivate: [AuthService]},
+  {path:'newproduct', component: AddProductComponent, canActivate: [AuthService]},
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cart/form', component: ShoppingCartFormComponent},

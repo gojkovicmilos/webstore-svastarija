@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShoppingCartComponent,
     ShoppingCartFormComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddProductComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

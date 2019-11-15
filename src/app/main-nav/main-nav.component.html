@@ -11,6 +11,7 @@
       <a mat-list-item  routerLink='contact' routerLinkActive='active'>Kontakt</a>
       <a mat-list-item  routerLink='login' routerLinkActive='active' *ngIf="!userLogged()">Prijavi se</a>
       <a mat-list-item  routerLink='orders' routerLinkActive='active' *ngIf="userLogged()">Lista porudžbina</a>
+      <a mat-list-item  routerLink='newproduct' routerLinkActive='active' *ngIf="userLogged()">Dodaj novi proizvod</a>
       <a mat-list-item  (click)="signOut()" routerLinkActive='active' *ngIf="userLogged()">Odjavi se</a>
 
       
