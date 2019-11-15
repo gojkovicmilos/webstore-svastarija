@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -18,7 +18,8 @@ import { UserService } from '../user.service';
 export class MainNavComponent {
 
   num: number = 0;
-  user: String;
+
+  @ViewChild('drawer', {static: false}) drawer: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -27,7 +28,7 @@ export class MainNavComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, private us:UserService, private _router: Router) {
-    this.user = localStorage.getItem("user");
+
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -56,6 +57,12 @@ export class MainNavComponent {
       return lista.length;
     }
     return this.num;
+  }
+
+  closeSideNavOnMobile(): void {
+    if(this.drawer._mode == "over") {
+      this.drawer.toggle();
+    }
   }
 
 }
