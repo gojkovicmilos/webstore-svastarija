@@ -3,114 +3,126 @@
     <mat-card-title>Unesite Vaše podatke:</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-            <mat-label>Ime </mat-label>
-            <input matInput name="firstName" [(ngModel)]="firstName">
-        </mat-form-field>
-      </div>
-      <div class="col">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+      <div class="row">
+        <div class="col">
           <mat-form-field class="full-width">
-            <mat-label>Prezime </mat-label>
-            <input matInput name="lastName" [(ngModel)]="lastName">
+              <mat-label>Ime </mat-label>
+              <input matInput name="firstName" formControlName="firstName">
+              <mat-error *ngIf="formGroup.controls['firstName'].invalid">Ovo polje je obavezno!</mat-error>
           </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Prezime </mat-label>
+              <input matInput name="lastName" formControlName="lastName">
+              <mat-error *ngIf="formGroup.controls['lastName'].invalid">Ovo polje je obavezno!</mat-error>
+            </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Ulica i broj</mat-label>
-          <input matInput name="address" [(ngModel)]="address">
-        </mat-form-field>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Ulica i broj</mat-label>
+            <input matInput name="address" formControlName="address">
+            <mat-error *ngIf="formGroup.controls['address'].invalid">Ovo polje je obavezno!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Grad</mat-label>
+            <input matInput name="city" formControlName="city">
+            <mat-error *ngIf="formGroup.controls['city'].invalid">Ovo polje je obavezno!</mat-error>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Grad</mat-label>
-          <input matInput name="city" [(ngModel)]="city">
-        </mat-form-field>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Postanski kod</mat-label>
+            <input matInput name="postalCode" maxlength="5" placeholder="Postanski kod" formControlName="postalCode">
+            <mat-hint align="end">{{formGroup.get('postalCode').length}} / 5</mat-hint> 
+            <mat-error *ngIf="formGroup.controls['postalCode'].invalid">Ovo polje je obavezno!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+              <mat-label>Drzava</mat-label>
+              <mat-select placeholder="Drzava" formControlName="state">
+                  <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                    {{ state.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formGroup.controls['state'].invalid">Ovo polje je obavezno!</mat-error>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Postanski kod</mat-label>
-          <input matInput name="postalCode" maxlength="5" placeholder="Postanski kod" [(ngModel)]="postalCode">
-          <mat-hint align="end">{{postalCode.length}} / 5</mat-hint>
-        </mat-form-field>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Telefon</mat-label>
+            <input matInput type="tel" name="phone" formControlName="phone">
+            <mat-hint>primer: +38160111222</mat-hint>
+            <mat-error *ngIf="formGroup.controls['phone'].invalid">Ovo polje je obavezno!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" name="email" formControlName="email">
+            <mat-hint>primer: example@mail.com</mat-hint>
+            <mat-error *ngIf="formGroup.controls['email'].hasError('required')">Ovo polje je obavezno!</mat-error>
+            <mat-error *ngIf="formGroup.controls['email'].hasError('email')">Neispravan format e-mail adrese!</mat-error>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-            <mat-label>Drzava</mat-label>
-            <mat-select placeholder="Drzava" [(ngModel)]="state">
-                <mat-option *ngFor="let state of states" [value]="state.abbreviation">
-                  {{ state.name }}
-                </mat-option>
-              </mat-select>
-        </mat-form-field>
+      <div class="row" *ngIf="!showExtraContactInfoFormField">
+        <div class="col">
+          <button mat-button type="button" (click)="showExtraContactInfoFormField = !showExtraContactInfoFormField">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Telefon</mat-label>
-          <input matInput type="tel" name="phone" [(ngModel)]="phone">
-          <mat-hint>primer: +38160111222</mat-hint>
-        </mat-form-field>
+      <div class="row" *ngIf="showExtraContactInfoFormField" @myInsertRemoveTrigger>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Telefon 2</mat-label>
+            <input matInput type="tel" name="phone" formControlName="phone2">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>E-mail 2</mat-label>
+            <input matInput type="email" name="email" formControlName="email2">
+            <mat-error *ngIf="formGroup.controls['email2'].hasError('email')">Neispravan format e-mail adrese!</mat-error>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>E-mail</mat-label>
-          <input matInput type="email" name="email" [(ngModel)]="email">
-          <mat-hint>primer: example@mail.com</mat-hint>
-        </mat-form-field>
+      <div class="row" *ngIf="showExtraContactInfoFormField">
+        <div class="col">
+          <button mat-button type="button" (click)="showExtraContactInfoFormField = !showExtraContactInfoFormField">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="row" *ngIf="!showExtraContactInfoFormField">
-      <div class="col">
-        <button mat-button type="button" (click)="showExtraContactInfoFormField = !showExtraContactInfoFormField">
-          <mat-icon>add_circle_outline</mat-icon>
-        </button>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Poruka</mat-label>
+            <textarea matInput placeholder="Poruka(opciono)" formControlName="note"></textarea>
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <div class="row" *ngIf="showExtraContactInfoFormField" @myInsertRemoveTrigger>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Telefon 2</mat-label>
-          <input matInput type="tel" name="phone" [(ngModel)]="phone">
-        </mat-form-field>
-      </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>E-mail 2</mat-label>
-          <input matInput type="email" name="email" [(ngModel)]="email">
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row" *ngIf="showExtraContactInfoFormField">
-      <div class="col">
-        <button mat-button type="button" (click)="showExtraContactInfoFormField = !showExtraContactInfoFormField">
-          <mat-icon>remove_circle_outline</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Poruka</mat-label>
-          <textarea matInput placeholder="Poruka(opciono)" [(ngModel)]="note"></textarea>
-        </mat-form-field>
-      </div>
-    </div>
-    
+      
 
-    <div class="row">
-      <div class="col">
-        <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Podaci vezani za ime i prezime, adresu, telefon i e-mail su obavezni!"><mat-icon>arrow_forward_ios</mat-icon></button>
-        <button style='float: right;' mat-button color="primary" *ngIf="!checkForm();"(click) = 'loadData();purchase();onSubmit();resetForm();homePage();'>Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
-        <button style="float: left;" mat-button color="primary" (click)="resetForm();goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
+      <div class="row">
+        <div class="col">
+          <!-- <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Podaci vezani za ime i prezime, adresu, telefon i e-mail su obavezni!"><mat-icon>arrow_forward_ios</mat-icon></button> -->
+          <button style='float: right;' mat-button color="primary" type="submit" [disabled]="!formGroup.valid" >Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
+          <button style="float: left;" mat-button color="primary" (click)="goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
+        </div>
       </div>
-    </div>
+    </form>
   </mat-card-content>
 
 </mat-card>

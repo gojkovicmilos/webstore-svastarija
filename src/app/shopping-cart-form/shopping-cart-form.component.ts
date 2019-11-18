@@ -6,6 +6,7 @@ import { Product } from '../product';
 import { Location } from '@angular/common'
 import { trigger, transition, animate, style } from '@angular/animations';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-cart-form',
@@ -25,17 +26,8 @@ export class ShoppingCartFormComponent implements OnInit {
 
   products:Product[] = [];
 
-  firstName:string = "";
-  lastName:string = "";
-  address:string = "";
-  city:string = "";
-  state: string = "";
-  postalCode: string = "";
-  phone:string = "";
-  email:string = "";
-  phone2: string = "";
-  email2: string = "";
-  note:string = "";
+  private formGroup: FormGroup;
+
 
 
   orderToSend:Order = new Order;
@@ -44,33 +36,32 @@ export class ShoppingCartFormComponent implements OnInit {
 
   showExtraContactInfoFormField: boolean = false;
 
-  constructor(private os:OrderService, private _location: Location, private _router: Router) { }
+  constructor(private os:OrderService, private _location: Location, private _router: Router, private _formBuilder: FormBuilder) { }
+
+  createForm() {
+    this.formGroup = this._formBuilder.group({
+      "firstName": ['', Validators.required],
+      "lastName": ['', Validators.required],
+      "address": ['', Validators.required],
+      "city": ['', Validators.required],
+      "state": ['', Validators.required],
+      "postalCode": ['', Validators.required],
+      "phone": ['', Validators.required],
+      "email": ['', [Validators.required, Validators.email]], 
+      "phone2": [null],
+      "email2": [null, Validators.email],
+      "note": [null]
+
+    });
+  }
 
   ngOnInit() {
     this.products = JSON.parse(localStorage.getItem("cart"));
     this.totalCost = this.getTotalCost();
+    this.createForm();
   }
 
-  loadData() {
-    this.orderToSend.customerFirstName = this.firstName;
-    this.orderToSend.customerLastName = this.lastName;
-    this.orderToSend.customerAddress = this.address;
-    this.orderToSend.customerCity = this.city;
-    this.orderToSend.customerPostalCode = this.postalCode;
-    this.orderToSend.customerState = this.state;
-    this.orderToSend.customerEmail = this.email;
-    this.orderToSend.customerPhone = this.phone;
-    this.orderToSend.customerEmail2 = this.email2;
-    this.orderToSend.customerPhone2 = this.phone2;
-    this.orderToSend.customerNote = this.note;
-    this.orderToSend.date = new Date();
-    this.orderToSend.price = this.totalCost;
-    this.orderToSend.productsO = this.products;
-    this.orderToSend.title = "newOrder " + this.firstName + " " + this.lastName;
-
-    //console.log(this.orderToSend);
-
-  }
+ 
 
   purchase()
   {
@@ -102,60 +93,37 @@ export class ShoppingCartFormComponent implements OnInit {
     record['delivered'] = this.orderToSend.delivered;
 
     this.os.createOrder(record).then(resp =>
-      {
-       
+      {   
         this.orderToSend = new Order;
         localStorage.setItem("cart", "[]");
-        this.resetForm();
+        this.formGroup.reset();
         this.totalCost = 0;
-        this.ngOnInit();
-        
+        this.ngOnInit();  
         console.log(resp);
       })
       .catch(error =>
       {
         console.log(error);
-      });
-    
-    
+      }); 
 
   }
 
-  resetForm(): void {
-    this.firstName = "";
-    this.lastName = "";
-    this.address = "";
-    this.city = "";
-    this.postalCode = "";
-    this.state = "";
-    this.email = "";
-    this.email2 = "";
-    this.phone = "";
-    this.phone2 = "";
-    this.note = "";
-  }  
-
-  checkForm(): boolean {
-    if(this.firstName != "" && this.lastName != "" && this.address != "" &&
-      this.city != "" && this.postalCode != "" && this.state != "" && this.email != "" && this.phone != "" && 
-      this.products.length != 0 && this.email.includes('@')) {
-       return false
-    }
-    return true;
-   }
 
 
   getTotalCost() {
-    return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
+    if(this.products != null) {
+      return this.products.map(p => p.price).reduce((acc, value) => acc + value, 0);
+    }
+    return 0;
   }
 
  
-  onSubmit() {
+  notification() {
     alert('Hvala na saradnji!');
   }
 
   goBack() {
-    this.resetForm();
+    this.formGroup.reset();
     this._location.back();
   }
 
@@ -166,8 +134,28 @@ export class ShoppingCartFormComponent implements OnInit {
   states = [
     {name: 'Srbija', abbreviation: 'SRB'},
     {name: 'Bosna i Hercegovina', abbreviation: 'BiH'}
-  ]
+  ];
 
-
+  onSubmit(post) {
+    this.orderToSend.customerFirstName = post.firstName;
+    this.orderToSend.customerLastName = post.lastName;
+    this.orderToSend.customerAddress = post.address;
+    this.orderToSend.customerCity = post.city;
+    this.orderToSend.customerPostalCode = post.postalCode;
+    this.orderToSend.customerState = post.state;
+    this.orderToSend.customerEmail = post.email;
+    this.orderToSend.customerPhone = post.phone;
+    this.orderToSend.customerEmail2 = post.email2;
+    this.orderToSend.customerPhone2 = post.phone2;
+    this.orderToSend.customerNote = post.note;
+    this.orderToSend.date = new Date();
+    this.orderToSend.price = this.totalCost;
+    this.orderToSend.productsO = this.products;
+    this.orderToSend.title = "newOrder " + post.firstName + " " + post.lastName;
  
+    this.purchase();
+    this.formGroup.reset();
+    this.notification();
+    this.homePage();
+  }
 }
