@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../order';
 import { OrderService } from '../order.service';
-import { MatSnackBar } from '@angular/material';
 import { Product } from '../product';
 import { Location } from '@angular/common'
 import { trigger, transition, animate, style } from '@angular/animations';
@@ -45,7 +44,7 @@ export class ShoppingCartFormComponent implements OnInit {
       "address": ['', Validators.required],
       "city": ['', Validators.required],
       "state": ['', Validators.required],
-      "postalCode": ['', Validators.required],
+      "postalCode": ['', [Validators.required, Validators.minLength]],
       "phone": ['', Validators.required],
       "email": ['', [Validators.required, Validators.email]], 
       "phone2": [null],
@@ -124,7 +123,7 @@ export class ShoppingCartFormComponent implements OnInit {
 
   goBack() {
     this.formGroup.reset();
-    this._location.back();
+    this._router.navigate(['cart']);
   }
 
   homePage() {
@@ -157,5 +156,10 @@ export class ShoppingCartFormComponent implements OnInit {
     this.formGroup.reset();
     this.notification();
     this.homePage();
+  }
+
+  getPostalCodeLen() {
+    let len = String(this.formGroup.get('postalCode').value).length;
+    return len;
   }
 }

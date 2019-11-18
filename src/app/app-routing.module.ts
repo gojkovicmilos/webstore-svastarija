@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'about', component: AboutUsComponent, data: {animation: 'AboutPage'}},
   {path:'contact', component: ContactComponent},
   {path:'orders', component: OrderComponent, canActivate: [AuthService]},
-  {path:'newproduct', component: AddProductComponent, canActivate: [AuthService]},
+  {path:'newProduct', component: AddProductComponent, canActivate: [AuthService]},
   {path: 'cart', component: ShoppingCartComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cart/form', component: ShoppingCartFormComponent},

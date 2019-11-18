@@ -40,8 +40,8 @@
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Postanski kod</mat-label>
-            <input matInput name="postalCode" maxlength="5" placeholder="Postanski kod" formControlName="postalCode">
-            <mat-hint align="end">{{formGroup.get('postalCode').length}} / 5</mat-hint> 
+            <input matInput type="number" name="postalCode" maxlength="5" placeholder="Postanski kod" formControlName="postalCode">
+            <mat-hint align="end">{{getPostalCodeLen()}} / 5</mat-hint> 
             <mat-error *ngIf="formGroup.controls['postalCode'].invalid">Ovo polje je obavezno!</mat-error>
           </mat-form-field>
         </div>
@@ -117,8 +117,7 @@
 
       <div class="row">
         <div class="col">
-          <!-- <button style="float: right;" mat-button *ngIf='checkForm();' [disabled]='true' matTooltip="Podaci vezani za ime i prezime, adresu, telefon i e-mail su obavezni!"><mat-icon>arrow_forward_ios</mat-icon></button> -->
-          <button style='float: right;' mat-button color="primary" type="submit" [disabled]="!formGroup.valid" >Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
+          <button *ngIf="products.length!=0" style='float: right;' mat-button color="primary" type="submit" [disabled]="!formGroup.valid">Poruči <mat-icon>arrow_forward_ios</mat-icon></button>
           <button style="float: left;" mat-button color="primary" (click)="goBack();"><mat-icon>arrow_back_ios</mat-icon>Nazad na korpu</button>
         </div>
       </div>
