@@ -44,7 +44,7 @@ export class ShoppingCartFormComponent implements OnInit {
       "address": ['', Validators.required],
       "city": ['', Validators.required],
       "state": ['', Validators.required],
-      "postalCode": ['', [Validators.required, Validators.minLength]],
+      "postalCode": ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       "phone": ['', Validators.required],
       "email": ['', [Validators.required, Validators.email]], 
       "phone2": [null],

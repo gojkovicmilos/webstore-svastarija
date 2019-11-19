@@ -40,15 +40,16 @@
         <div class="col">
           <mat-form-field class="full-width">
             <mat-label>Postanski kod</mat-label>
-            <input matInput type="number" name="postalCode" maxlength="5" placeholder="Postanski kod" formControlName="postalCode">
+            <input matInput name="postalCode" minlength="5" maxlength="5" formControlName="postalCode">
             <mat-hint align="end">{{getPostalCodeLen()}} / 5</mat-hint> 
-            <mat-error *ngIf="formGroup.controls['postalCode'].invalid">Ovo polje je obavezno!</mat-error>
+            <mat-error *ngIf="formGroup.controls['postalCode'].hasError('required')">Ovo polje je obavezno!</mat-error>
+            <mat-error *ngIf="formGroup.controls['postalCode'].hasError('pattern')">Samo brojevi!</mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width">
               <mat-label>Drzava</mat-label>
-              <mat-select placeholder="Drzava" formControlName="state">
+              <mat-select formControlName="state">
                   <mat-option *ngFor="let state of states" [value]="state.abbreviation">
                     {{ state.name }}
                   </mat-option>
