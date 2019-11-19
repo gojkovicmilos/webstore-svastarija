@@ -14,7 +14,6 @@ export class AddProductComponent implements OnInit {
   productAmount:number;
   productCategory:string = "";
   productImage:string = "";
-  menuOpened:boolean = false;
   file:File;
 
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
@@ -36,12 +35,6 @@ export class AddProductComponent implements OnInit {
   
       reader.readAsArrayBuffer(inputNode.files[0]);
     }
-  }
-
-  openMenu()
-  {
-    this.menuOpened = !this.menuOpened;
-
   }
 
   createProduct()
