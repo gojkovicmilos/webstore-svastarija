@@ -67,7 +67,7 @@ export class EditProductComponent implements OnInit {
       this.product = new Product();
       console.log(resp);
       this._router.navigate(['']);
-      this._snackBar.open("Uspešno izmenjen proizvod!");
+      this._snackBar.open("Uspešno izmenjen proizvod!", '', {duration: 3000});
     }).catch(error => {
       console.log(error);
     });
