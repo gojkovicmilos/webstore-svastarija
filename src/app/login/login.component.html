@@ -5,7 +5,7 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
     <div class="row">
       <div class="col">
-          <mat-form-field>
+          <mat-form-field class="full-width">
             <input type="text" matInput placeholder="Username" formControlName="username">
             <mat-error *ngIf="formGroup.controls['username'].invalid">
               {{getError('user')}}
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <mat-form-field>
+        <mat-form-field class="full-width">
           <input type="password" matInput placeholder="Password" formControlName="password">
           <mat-error *ngIf="!formGroup.controls['password'].valid">
             {{getError('pass')}}
