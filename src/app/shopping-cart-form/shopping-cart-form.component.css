@@ -1,12 +1,12 @@
 .row {
     display: flex;
     flex-direction: row;
-    margin-top: 1rem;
   }
   
   .col {
     flex: 1;
     margin-right: 20px;
+    margin-top: 1rem;
   }
   
   .col:last-child {
