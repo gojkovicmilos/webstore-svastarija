@@ -48,7 +48,7 @@ export class ProductService {
  
  
   updateProduct(recordId,record){
-    this.fs.doc('products/' + recordId).update(record);
+    return this.fs.doc('products/' + recordId).update(record);
   }
  
   deleteProduct(recordId) {

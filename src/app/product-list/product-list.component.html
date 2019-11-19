@@ -44,8 +44,9 @@
               </div>
             </mat-select> -->
           </mat-form-field>
-          <a color="primary" [disabled]="(product.amount == 0)" (click)='addToCart(product.id); openSnackBar(product.name, product.amount); resetNumber();' mat-button ><mat-icon class="example-tab-icon">add_shopping_cart</mat-icon></a>
-          <a color="primary" *ngIf="userLogged()"  (click)='deleteProduct(product.id); openSnackBar2(product.name); resetNumber();' mat-button ><mat-icon class="example-tab-icon">delete</mat-icon></a>
+          <a [disabled]="(product.amount == 0)" (click)='addToCart(product.id); openSnackBar(product.name, product.amount); resetNumber();' mat-button class="example-tab-icon"><mat-icon>add_shopping_cart</mat-icon></a>
+          <a *ngIf="userLogged()" (click)='store(product.id);resetNumber();' mat-button  class="example-tab-icon" routerLink="edit"><mat-icon>edit</mat-icon></a>
+          <a *ngIf="userLogged()"  (click)='deleteProduct(product.id); openSnackBar2(product.name); resetNumber();' mat-button class="example-tab-icon"><mat-icon>delete</mat-icon></a>
           
         </div>
       </mat-card-actions>

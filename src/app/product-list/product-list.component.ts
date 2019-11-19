@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { Subscription } from 'rxjs';
 import { UserService } from '../user.service';
 
 @Component({
@@ -157,6 +155,7 @@ this.filteredProducts = this.products;
   store(id: string): void {
     localStorage.setItem('productId', id);
   }
+
   
   resetNumber(): void {
     this.num = 1;
