@@ -42,15 +42,15 @@ export class ProductComponent implements OnInit {
 
   openDialog() {
     const d = this.dialog.open(ProductModalComponent, {
+      width: 'calc(100% - 200px)',
       maxWidth: '100vw'
-       
       
     });
     const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
       if (size.matches) {
-        d.updateSize('100vw', '80vh');
+        d.updateSize('100vw', '100vh');
       } else {
-        d.updateSize('calc(100% - 100px)', '');
+        d.updateSize('calc(100% - 200px)');
       }
     });
     d.afterClosed().subscribe(() => {
