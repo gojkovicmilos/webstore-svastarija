@@ -1,6 +1,5 @@
 <div>
-    <h2 mat-dialog-title>{{product.name}}</h2>
-    <h4 mat-dialog-title *ngIf="product.amount==0" style="color:#e91e63">Nema na lageru!</h4>
+    <h2 mat-dialog-title>{{product.name}} <span *ngIf="product.amount==0" style="color:#e91e63"> -> Nema na lageru!</span></h2>
     <mat-dialog-content style="text-align: center;">
         <img mat-card-image src="{{product.picture}}" alt="">
         <p>Cena: {{product.price}} RSD</p>

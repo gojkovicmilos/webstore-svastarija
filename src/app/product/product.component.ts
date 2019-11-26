@@ -1,14 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import { MatDialog } from '@angular/material';
-import { ProductModalComponent } from '../product-modal/product-modal.component';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState
-} from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-product',
@@ -20,11 +13,8 @@ export class ProductComponent implements OnInit {
   product: Product = new Product;
 
   gotP:any = {};
-  constructor(private ps: ProductService, private dialog: MatDialog, private readonly breakpointObserver: BreakpointObserver) { }
-  isExtraSmall: Observable<BreakpointState> = this.breakpointObserver.observe(
-    Breakpoints.XSmall
-  );
-
+  constructor(private ps: ProductService) { }
+  
   ngOnInit() {
     this.ps.getProductById(localStorage.getItem('productId')).subscribe(actionArray =>{
 
@@ -39,26 +29,6 @@ export class ProductComponent implements OnInit {
   }
 
   
-
-  openDialog() {
-    const d = this.dialog.open(ProductModalComponent, {
-      width: 'calc(100% - 200px)',
-      maxWidth: '100vw'
-      
-    });
-    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
-      if (size.matches) {
-        d.updateSize('100vw', '100vh');
-      } else {
-        d.updateSize('calc(100% - 200px)');
-      }
-    });
-    d.afterClosed().subscribe(() => {
-      smallDialogSubscription.unsubscribe();
-    });
-
-  }
-
   
 
 }
