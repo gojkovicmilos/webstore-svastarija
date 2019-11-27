@@ -15,6 +15,7 @@ export class AddProductComponent implements OnInit {
   productAmount:number;
   productCategory:string = "";
   productImage:string = "";
+  productGallery:string[] = [];
   file:File;
 
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
@@ -40,8 +41,9 @@ export class AddProductComponent implements OnInit {
 
   createProduct()
   {
-    
-    this.productImage = localStorage.getItem("imgURL");
+    this.productGallery = JSON.parse(localStorage.getItem("imgURL"));
+
+    this.productImage = this.productGallery[0];
 
     console.log(this.productImage.search("test%2F"));
     
@@ -53,6 +55,7 @@ export class AddProductComponent implements OnInit {
     record['category'] = this.productCategory;
     record['description'] = this.productDescription;
     record['amount'] = this.productAmount;
+    record['gallery'] = this.productGallery;
     this.ps.createProduct(record).then(resp =>{
       this.productName = "";
       this.productPrice = 0;
@@ -60,6 +63,7 @@ export class AddProductComponent implements OnInit {
       this.productCategory = "";
       this.productAmount = 0;
       this.productImage = "";
+      this.productGallery = [];
       console.log(resp);
       this._router.navigate(['']);
     }).catch(error => {

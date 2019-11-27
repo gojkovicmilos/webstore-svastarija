@@ -15,7 +15,7 @@ export class UploadTaskComponent implements OnInit {
 
   task: AngularFireUploadTask;
   snapshot: Observable<any>;
-  downloadURL: string;
+  downloadURL: string[] = JSON.parse(localStorage.getItem("imgURL"));
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 
@@ -36,8 +36,9 @@ export class UploadTaskComponent implements OnInit {
       tap(console.log),
       // The file's download URL
       finalize( async() =>  {
-        this.downloadURL = await ref.getDownloadURL().toPromise();
-        localStorage.setItem('imgURL', this.downloadURL);
+        this.downloadURL.push(await ref.getDownloadURL().toPromise());
+        console.log(this.downloadURL);
+        localStorage.setItem('imgURL', JSON.stringify(this.downloadURL));
 
         this.db.collection('files').add( { downloadURL: this.downloadURL, path });
         

@@ -7,5 +7,6 @@ export class Product
     picture:string;
     price:number;
     amount:number;
+    gallery:string[];
 
 }
