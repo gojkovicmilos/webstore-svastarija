@@ -1,1 +1,16 @@
-One product view
+<div class="main-div">
+    <mat-card class="example-card item">
+        <mat-card-header>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>Cena: {{product.price}}RSD</mat-card-subtitle>
+        </mat-card-header>
+    
+        <mat-card-content><img (click)="openDialog();" mat-card-image src="{{product.picture}}" alt="" ></mat-card-content>
+        <mat-card-content>{{product.description}}</mat-card-content>
+        <mat-card-content>{{product.quantity}} Proizvoda na lageru</mat-card-content>
+        <mat-card-content>Kategorija: {{product.category}}</mat-card-content>
+
+        
+        
+    </mat-card>
+</div>

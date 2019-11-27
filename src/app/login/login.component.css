@@ -1,18 +1,26 @@
 .row {
-  display: flex;
-  flex-direction: row;
-}
+    display: flex;
+    flex-direction: row;
+    text-align: center;
 
-.col {
-  flex: 1;
-  margin-right: 20px;
-  margin-top: 1rem;
-}
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
 
-.col:last-child {
-  margin-right: 0;
-}
 
-.row:last-child {
-  text-align: center;
-}
+  .full-width {
+    width: 100%;
+  }
+  
+  .shipping-card {
+    min-width: 120px;
+    margin: 20px auto;
+
+  }

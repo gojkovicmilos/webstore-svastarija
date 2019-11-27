@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs';
 import { UserService } from '../user.service';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState
-} from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { ProductModalComponent } from '../product-modal/product-modal.component';
 
 @Component({
   selector: 'app-product-list',
@@ -45,10 +40,7 @@ export class ProductListComponent implements OnInit {
  
 
 
-  constructor(private ps: ProductService, private _snackBar: MatSnackBar, private us: UserService, private readonly breakpointObserver: BreakpointObserver, private dialog: MatDialog) { }
-  isExtraSmall: Observable<BreakpointState> = this.breakpointObserver.observe(
-    Breakpoints.XSmall
-  );
+  constructor(private ps: ProductService, private _snackBar: MatSnackBar, private us: UserService) { }
 
   ngOnInit() {
     this.ps.getProducts().subscribe(actionArray =>{
@@ -165,7 +157,6 @@ this.filteredProducts = this.products;
   store(id: string): void {
     localStorage.setItem('productId', id);
   }
-
   
   resetNumber(): void {
     this.num = 1;
@@ -187,25 +178,6 @@ this.filteredProducts = this.products;
 
   userLogged() {
     return this.us.isLoggedIn();
-  }
-
-  openDialog() {
-    const d = this.dialog.open(ProductModalComponent, {
-      width: 'calc(100% - 250px)',
-      maxWidth: '100vw'
-      
-    });
-    const smallDialogSubscription = this.isExtraSmall.subscribe(size => {
-      if (size.matches) {
-        d.updateSize('100vw', '80vh');
-      } else {
-        d.updateSize('calc(100% - 250px)');
-      }
-    });
-    d.afterClosed().subscribe(() => {
-      smallDialogSubscription.unsubscribe();
-    });
-
   }
 
 }

@@ -7,32 +7,36 @@ import * as firebase from 'firebase/app';
 })
 export class UserService {
 
-  constructor(private fs: AngularFireAuth) {}
+  user: Observable<firebase.User>;
+  constructor(private fs: AngularFireAuth) {
+
+    this.user = fs.authState;
+   }
 
 
-signUp(email: string, password: string) {
-  this.fs
-    .auth
-    .createUserWithEmailAndPassword(email, password)
-    .then(value => {
-      console.log('Success!', value);
-    })
-    .catch(err => {
-      console.log('Something went wrong:',err.message);
-    });    
-  } 
+   signUp(email: string, password: string) {
+    this.fs
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Success!', value);
+      })
+      .catch(err => {
+        console.log('Something went wrong:',err.message);
+      });    
+  }
 
-logIn(email: string, password: string) {
-  this.fs
-    .auth
-    .signInWithEmailAndPassword(email, password)
-    .then(value => {
-      console.log('Nice, it worked!');
-      console.log(value.user.email);
-    })
-    .catch(err => {
-      console.log('Something went wrong:',err.message);
-    });
+  logIn(email: string, password: string) {
+    this.fs
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log('Nice, it worked!');
+        console.log(value.user.email);
+      })
+      .catch(err => {
+        console.log('Something went wrong:',err.message);
+      });
   }
 
   logOut() {

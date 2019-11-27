@@ -34,7 +34,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -56,8 +55,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     ShoppingCartFormComponent,
     LoginComponent,
     PageNotFoundComponent,
-    AddProductComponent,
-    EditProductComponent
+    AddProductComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
