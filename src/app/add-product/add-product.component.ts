@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -14,12 +15,11 @@ export class AddProductComponent implements OnInit {
   productAmount:number;
   productCategory:string = "";
   productImage:string = "";
-  menuOpened:boolean = false;
   file:File;
 
   categories:string[] = ["Torbe", "Rančevi", "Novčanici"];
 
-  constructor(private ps:ProductService) { }
+  constructor(private ps:ProductService, private _router: Router) { }
 
   ngOnInit() {
   }
@@ -36,12 +36,6 @@ export class AddProductComponent implements OnInit {
   
       reader.readAsArrayBuffer(inputNode.files[0]);
     }
-  }
-
-  openMenu()
-  {
-    this.menuOpened = !this.menuOpened;
-
   }
 
   createProduct()
@@ -67,6 +61,7 @@ export class AddProductComponent implements OnInit {
       this.productAmount = 0;
       this.productImage = "";
       console.log(resp);
+      this._router.navigate(['']);
     }).catch(error => {
       console.log(error);
     });

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
-import { MatDialog } from '@angular/material';
-import { ProductModalComponent } from '../product-modal/product-modal.component';
+
 
 @Component({
   selector: 'app-product',
@@ -14,8 +13,8 @@ export class ProductComponent implements OnInit {
   product: Product = new Product;
 
   gotP:any = {};
-  constructor(private ps: ProductService, private dialog: MatDialog) { }
-
+  constructor(private ps: ProductService) { }
+  
   ngOnInit() {
     this.ps.getProductById(localStorage.getItem('productId')).subscribe(actionArray =>{
 
@@ -29,8 +28,7 @@ export class ProductComponent implements OnInit {
     console.log(this.product);
   }
 
-  openDialog() {
-    this.dialog.open(ProductModalComponent);
-  }
+  
+  
 
 }

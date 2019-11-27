@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-product-modal',
@@ -11,7 +12,7 @@ export class ProductModalComponent implements OnInit {
   product: Product = new Product;
 
   gotP:any = {};
-  constructor(private ps: ProductService) {
+  constructor(private ps: ProductService, private us: UserService) {
     this.ps.getProductById(localStorage.getItem('productId')).subscribe(actionArray =>{
 
       this.product.name = actionArray.payload.get('name');
@@ -25,6 +26,10 @@ export class ProductModalComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  userLogged() {
+    return this.us.isLoggedIn();
   }
 
 }
