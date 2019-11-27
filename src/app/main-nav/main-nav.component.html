@@ -11,7 +11,7 @@
       <a mat-list-item  (click)="closeSideNavOnMobile()" routerLink='contact' routerLinkActive='active'>Kontakt</a>
       <a mat-list-item  (click)="closeSideNavOnMobile()" routerLink='login' routerLinkActive='active' *ngIf="!userLogged()">Prijavi se</a>
       <a mat-list-item  (click)="closeSideNavOnMobile()" routerLink='orders' routerLinkActive='active' *ngIf="userLogged()">Lista porudžbina</a>
-      <a mat-list-item  (click)="closeSideNavOnMobile()" routerLink='newproduct' routerLinkActive='active' *ngIf="userLogged()">Dodaj novi proizvod</a>
+      <a mat-list-item  (click)="closeSideNavOnMobile()" routerLink='newProduct' routerLinkActive='active' *ngIf="userLogged()">Dodaj novi proizvod</a>
       <a mat-list-item  (click)="signOut();closeSideNavOnMobile();" routerLinkActive='active' *ngIf="userLogged()">Odjavi se</a>
 
       

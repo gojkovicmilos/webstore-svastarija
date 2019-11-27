@@ -57,3 +57,7 @@ mat-form-field {
     text-align: center;
 }
 
+.example-tab-icon:hover {
+    color: #e91e63;
+}
+
