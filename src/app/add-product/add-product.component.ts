@@ -64,6 +64,7 @@ export class AddProductComponent implements OnInit {
       this.productAmount = 0;
       this.productImage = "";
       this.productGallery = [];
+      localStorage.setItem("imgURL", "[]");
       console.log(resp);
       this._router.navigate(['']);
     }).catch(error => {
