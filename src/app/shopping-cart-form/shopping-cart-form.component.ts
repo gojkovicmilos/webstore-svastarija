@@ -25,7 +25,7 @@ export class ShoppingCartFormComponent implements OnInit {
 
   products:Product[] = [];
 
-  private formGroup: FormGroup;
+  public formGroup: FormGroup;
 
 
 

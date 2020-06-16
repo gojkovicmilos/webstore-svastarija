@@ -27,7 +27,7 @@
             <mat-form-field class="full-width">
         
               <mat-label>Kategorija</mat-label>
-              <mat-select [(value)]="selected"[(ngModel)]="product.category" name="select">  
+              <mat-select [(ngModel)]="product.category" name="select">  
                 <mat-option [value]="category" *ngFor="let category of categories" >{{category}}</mat-option>  
               </mat-select>
                 

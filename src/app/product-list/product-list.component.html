@@ -1,5 +1,5 @@
 <div class="tab-container">
-  <nav mat-tab-nav-bar [backgroundColor]="background">
+  <nav mat-tab-nav-bar>
     <a class="tab" mat-tab-link *ngFor="let link of links" (click)='activeLink = link;showByCat(link);' [active]="activeLink == link">
       {{link}}
     </a>
